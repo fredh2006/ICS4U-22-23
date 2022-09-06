@@ -1,20 +1,163 @@
 <!DOCTYPE html>
+<!--Explains what type of document the page is  -->
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Crash Course</title>
+  <!--Nothing to do with output in the browser - instead has page title, links to other code, and metadata-->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Cheat Sheet</title>
 </head>
 
 <body>
-  <h1>This is a main header</h1>
-  <h2>This is the second level</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam vitae accusamus quae sapiente unde? Magnam voluptate impedit at voluptas quibusdam nulla. Aliquam enim rerum error, dolor, libero consectetur temporibus maiores dignissimos earum nesciunt inventore blanditiis delectus tempore cumque doloribus! Labore, corporis omnis obcaecati ipsa magnam molestias dolorem sapiente consequuntur fugit temporibus quidem fuga dignissimos similique at laudantium est expedita eum officia harum quia ea. Odio quidem rerum molestias quisquam.</p>  
-  <h2>This is still second level</h2>
-  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A tenetur veritatis perspiciatis asperiores, explicabo laudantium quos totam. Eius voluptatum recusandae sunt consequuntur quibusdam architecto blanditiis magni culpa sed asperiores illo repudiandae unde veritatis, porro officia! Ad numquam eos aspernatur tempora nulla est distinctio, nesciunt animi aliquid consequuntur vel pariatur voluptatem provident aut recusandae eum maxime possimus molestias nostrum alias dolorem!</p>
-  <span>Lorem ipsum dolor sit amet.</span>
-  <span>Click <a href = "http://mlb.com">here</href></a> to go to mlb.com</span>
+  <a href = "blog.html" target="_blank" >Go to blog</a>
+  <!--The actual markup displayed in the browser, headings, text, images, etc.-->
+  <!--Headings-->
+  <h1>Heading One</h1>
+  <h2>Heading Two</h2>
+  <h3>Heading Three</h3>
+  <h4>Heading Four</h4>
+  <h5>Heading Five</h5>
+  <h6>Heading Six</h6>
+  <!--Paragraphs-->
+  <p><em>Lorem ipsum dolor sit amet consectetur adipisicing elit</em>. <strong>Quas voluptatibus voluptas dolor
+      itaque</strong> illo earum libero excepturi? Corrupti dicta dolorem ipsa beatae corporis earum est accusantium
+    eligendi voluptate quidem, sunt vero, quod culpa similique, magni sequi eum voluptas aliquam a maxime aut saepe ad!
+    Ullam dolores provident quos mollitia saepe rem iure sed temporibus autem veritatis dolor, nulla in repellat
+    deleniti perspiciatis. Voluptate cupiditate distinctio itaque, quibusdam facilis dignissimos.</p>
+  <p>Click <a href="https://mlb.com" target="_blank">here</a> to go to the mlb website</p>
+  <!--All tags can have attirbutes which provide more info about a certain element-->
+
+  <!--Lists-->
+  <ul>
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+    <li>List Item 4</li>
+  </ul>
+  <ol>
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+    <li>List Item 4</li>
+  </ol>
+
+  <!--Table-->
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+      </tr>
+    <tbody>
+      <tr>
+        <td>Fred He</td>
+        <td>fhe@bayviewglen.ca</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <td>Poop</td>
+        <td>poop@bayviewglen.ca</td>
+        <td>16</td>
+      </tr>
+    </tbody>
+    </thead>
+  </table>
+
+  <br>
+  <hr>
+  <br>
+
+
+  <!--Forms-->
+  <form action="process.php" method="POST">
+    <div>
+      <label>First Name</label>
+      <input type="text" name="firstName" placeholder="Enter First Name">
+    </div>
+
+    <br>
+
+    <div>
+      <label>Last Name</label>
+      <input type="text" name="lastName">
+    </div>
+
+    <br>
+
+    <div>
+      <label>Email</label>
+      <input type="text" name="email">
+    </div>
+
+    <br>
+
+    <div>
+      <label>Message</label>
+      <textarea name="message"></textarea>
+    </div>
+
+    <br>
+
+    <div>
+      <label>Gender</label>
+      <select name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <br>
+
+    <div>
+      <label>Age:</label>
+      <input type="number" name="age" value="30">
+    </div>
+
+    <br>
+
+    <div>
+      <label>Birthday</label>
+      <input type="date" name="birthday">
+    </div>
+
+    <br>
+
+    <input type="submit" name="submit" value="Submit">
+
+  </form>
+
+  <!--Button-->
+  <button>Click Me</button>
+
+  <br>
+
+  <!--Images-->
+  <!--Browsers can open more than just html files -->
+  <a href="sample image.jpg">
+    <img src="sample image.jpg" alt="My Sample Image" width="200">
+  </a>
+
+  <!--Quotations-->
+  <blockquote cite="http://bayviewglen.ca">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium repudiandae nisi expedita voluptas, esse vero
+    sint ex nesciunt similique, consequatur provident odio iste consectetur cum temporibus. Sed officiis numquam
+    inventore fugiat reiciendis dicta accusantium necessitatibus ab tenetur consequatur corporis quasi sequi veniam et
+    quia odio iure expedita magni, cupiditate architecto. Explicabo voluptatibus nihil eos similique maxime. Sapiente
+    quod molestiae maxime delectus dolore aliquid, non enim minima? Doloribus, tempore eveniet?
+  </blockquote>
+
+  <p>The <abbr title="World Wide Web">WWW</abbr> is awesome</p>
+
+  <p><cite>HTML crash course by Fred</cite></p>
+
+  <!--A sematic element describes its meaning to both the browser and the developer-->
+  <!--header, nav, section, article, aside, footer-->
+  <!--These help you further structure your document-->
+
 </body>
 
 </html>
