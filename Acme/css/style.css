@@ -160,7 +160,7 @@ article#main-col {
 
 /* Services List */
 
-u1 #services li {
+ul #services li {
     list-style: none;
     padding: 20px;
     border: #cccccc solid 1px;
