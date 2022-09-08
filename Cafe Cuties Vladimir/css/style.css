@@ -19,7 +19,7 @@ ul {
 
 .button_1 {
     height: 38px;
-    background: #e8491d;
+    background: #e5e44c;
     border: 0;
     padding-left: 20px;
     padding-right: 20px;
@@ -34,9 +34,19 @@ ul {
     margin-bottom: 10px;
 }
 
+.green {
+    background: #033b1b;
+    border: #033b1b 1px solid;
+    border-radius: 25px;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
 /*Header*/
 header {
-    background: #35424a;
+    background: #f868eb;
     color: #ffffff;
     padding-top: 30px;
     min-height: 70px;
@@ -48,6 +58,11 @@ header a {
     text-decoration: none;
     text-transform: uppercase;
     font-size: 16px;
+}
+
+#main-col a{
+    text-decoration:none;
+    color: #f868eb;
 }
 
 header li {
@@ -70,21 +85,26 @@ header nav {
 }
 
 header .highlight,
-header .current a {
+header .current a,
+aside .highlight {
     color: #e5e44c;
     font-weight: bold;
 }
 
 header a:hover {
-    color: #f868eb;
+    color: #640a5c;
     font-weight: bold;
+}
+
+#main-col a:hover{
+    color: #6fff00;
 }
 
 /*Showcase*/
 
 #showcase {
     min-height: 400px;
-    background: url('../images/ccvlad.jpg'); 0, -100px no-repeat;
+    background: url('../images/ccvlad.jpg') no-repeat;
     background-size: cover;
     text-align: center;
     color: #ffffff;
@@ -110,7 +130,7 @@ header a:hover {
 #gift {
     padding: 15px;
     color: #ffffff;
-    background: #35424a;
+    background: #f868eb;
 }
 
 #gift h1 {
@@ -158,7 +178,23 @@ header a:hover {
     margin-left: 50px;
 }
 
+.green a{
+    text-decoration: none;
+}
 
+#sidebar {
+    float: right; 
+    width: 10%;
+    margin-top: 10px;
+    margin-right: 140px;
+ }
+
+.opgg img{
+    padding-top: 20px;
+    width: 950px;
+    display: block;
+    padding-left: 138px;
+}
 
 footer {
     padding: 20px;
