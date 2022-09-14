@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
-    <style>
-        #container{
-            background-color: #3c524a;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 30px;
-        }
-        
-        .items{
-            padding: 0 10px;
-            height: 60px;
-            width: 15%;
-            color: #fff;
-            font-weight: 200;
-            margin-top: 30px;
-            text-align: center;
-            font-family: "Cabin", sans-serif;
-            font-size: 24px; 
-        }
 
-        .image{
-            width: 60%;
-        }
-    </style>
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Navbar</title>
+   <style>
+      #container {
+         background-color: #3C524A;
+         display: flex;
+         justify-content: flex-end;
+         align-items: center;
+      }
+
+      .item {
+         margin: 20px;
+         color: white;
+         font-weight: 200;
+      }
+
+      .image {
+         width: 200px;
+      }
+
+      .item:nth-child(1) {
+         margin-right: auto;
+      }
+   </style>
 </head>
 
 <body>
-    <div id="container">
-        <div><img src="bvg logo.svg" class="image"></div>
-        <div class="items">COVID - 19</div>
-        <div class="items">Parent and Student Resources</div>
-        <div class="items">Alumni</div>
-        <div class="items">News and Publication</div>
-        <div class="items">60th Celebration</div>
-        <div class="items">Donate Online</div>
-    </div>    
+   <div id="container">
+      <div class="item"><img src="bvg logo.svg" class="image"></div>
+      <div class="item">COVID-19</div>
+      <div class="item">Parent and Student Resources</div>
+      <div class="item">Alumni</div>
+      <div class="item">News and Publications</div>
+      <div class="item">60th Celebration</div>
+      <div class="item">Donate Online</div>
+   </div>
+
 </body>
 
 </html>
