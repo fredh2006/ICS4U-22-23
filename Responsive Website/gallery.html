@@ -5,26 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vladimir</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-
     <!--Normal navbar-->
     <nav class="navbar">
         <div class="container">
             <h1><a href="index.html" class="home">VLADIMIR</a></h1>
             <ul class="nav">
                 <li>
-                    <a href="stats.html">My Stats</a>
-                </li>
-                <li>
                     <a href="about.html">About Vladimir</a>
                 </li>
                 <li>
-                    <a href="gallery.html">Skin Gallery</a>
+                    <a href="stats.html">My Stats</a>
+                </li>
+                <li>
+                    <a href="gift.html" class="btn">Gift Now</a>
                 </li>
             </ul>
         </div>
@@ -54,32 +53,46 @@
         </div>
     </nav>
 
-    <!--Form-->
-    <section class="section">
-        <div class="container2">
-            <div class="form">
-                <form action="/action_page.php">
-                    <h1>Gift Now</h1>
-                    <div class="holder">
-                        <input type="text" id="fname" name="fullname" class="spec" placeholder="Full Name">
-                        <input type="number" placeholder="Donate!" min="20">
-                        <textarea class="subject" name="subject" placeholder="Leave a Message"></textarea>
-                        <a href="#">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Donate
-                        </a>
-                    </div>
-                </form>
+    <!--Gallery header-->
+    <header class="gallery-header">
+        <div class="container">
+            <div class="text">
+                <p>SKIN GALLERY
+                <p>
+                <h1>View the newest Vladimir skins</h1>
+                <a href="#gallery-section" class="btn">View Skins</a>
+            </div>
+            <img src="./images/nvlad.jpg" class="bg-image">
+            <img src="./images/pnightbringer.jpg" class="bg-image2">
+        </div>
+    </header>
+
+    <!--Actual skin gallery-->
+    <section id="gallery-section">
+        <div class="container">
+            <div class="images">
+                <div class="image1">
+                    <h1>CAFE CUTIES VLADIMIR</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, corrupti?</p>
+                    <img src="./images/ccvlad.jpg" class="vlad">
+                </div>
+                <div class="image2">
+                    <h1>COSMIC DEVOURER VLADIMIR</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, corrupti?</p>
+                    <img src="./images/cdvlad.jpg" class="vlad">
+                </div>
+                <div class="image3">
+                    <h1>DARK WATERS VLADIMIR</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, corrupti?</p>
+                    <img src="./images/dwatersvlad.jpg" class="vlad">
+
+                </div>
             </div>
         </div>
     </section>
 
-
     <!--Footer-->
-    <footer class="footer-spec2">
+    <footer class="footer-spec">
         <div class="footer-container">
             <div class="text">
                 <p>Vladimir | A Project by L9 Genghis Khan</p>
@@ -94,8 +107,6 @@
             </div>
         </div>
     </footer>
-
-
 </body>
 
 </html>
