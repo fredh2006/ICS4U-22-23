@@ -87,10 +87,11 @@ ul {
     text-decoration: none;
 }
 
-.navbar a:hover {
+/*Underlining hover effect*/
+
+.navbar a:hover{
     color: #c3073f;
 }
-
 
 .navbar a::before {
     content: '';
