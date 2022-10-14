@@ -1,0 +1,18 @@
+.card{
+    z-index: -1;
+    position: relative;
+}
+
+.figure{
+    z-index: 1;
+    position: relative;
+    margin-bottom: -70px;
+    margin-top: 25px;
+    border: 4px rgb(150, 150, 150) solid;
+    border-radius: 75px;
+}
+
+.divider{
+    background-color: #000;
+    width: 500px;
+}
