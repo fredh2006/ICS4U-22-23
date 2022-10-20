@@ -63,6 +63,55 @@ const companies = [
  // Get companies that lasted 10 years or more
  const last = companies.filter(company => (company.end - company.start) >= 10)
  console.log(last);
- 
- 
+
+ // map
+
+// create array of company names
+const companyNames = companies.map(function(company){
+    return company.name;
+});
+
+const testMap = companies.map(company => `${company.name} [${company.start} - ${company.end}]`);
+console.log(testMap);
+
+const ageMap = ages
+    .map(age => Math.sqrt(age))
+    .map(age => age*2);
+
+
+console.log(ageMap);
+
+//sort
+
+//sort companies start date
+const sortedCompanies = companies.sort((a,b) => (a.start > b.start ? 1 : -1));
+console.log(sortedCompanies);
+
+//sort ages
+const sortAges = ages.sort((a, b) => a-b);
+console.log(sortAges);
+
+// reduce
+// let ageSum = 0;
+//  for(let i = 0; i<ages.length; i++){
+//     ageSum += ages[i];
+//  }
+
+const ageSum = ages.reduce((total, age) => total + age, 0)
+
+// get total years for all companies
+
+const totalYears = companies.reduce((total, company) => total + (company.end - company.start), 0)
+
+console.log(totalYears);
+
+// combine methods
+
+const combined = ages
+    .map(age => age*2)
+    .filter(age => age >= 40)
+    .sort((a, b) => a-b)
+    .reduce((a, b) => a+b, 0);
+
+console.log(combined);
  
