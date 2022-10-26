@@ -21,7 +21,7 @@ function wordCount(strings){
     return map;
 }
 
-//console.log(wordCount(["a", "b", "a", "c", "b"]));
+//console.log(wordCounqt(["a", "b", "a", "c", "b"]));
 
 function wordMultiple(strings){
     let map = new Map();

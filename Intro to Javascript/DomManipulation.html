@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM Example</title>
+    <style>
+        .highlight {
+            color: white;
+            padding: 10px;
+            width: 250px;
+            background-color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <img id="dino1" src="images/dinosaur.png"
+            alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <img id="dino2" src="images/dinosaur.png"
+            alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+    </section>
+
+    <!-- This way the page is loaded before the script runs -->
+    <script>
+        // let dino = document.querySelector('img');
+        // let dinos = document.querySelectorAll('img');
+        // let text = document.querySelector('p')
+
+        // let anchor = document.querySelector('a');
+        // anchor.textContent = 'Fred is the best';
+        // anchor.href = 'https://developer.mozilla.org'
+
+        const sect = document.querySelector('section');
+
+        const para = document.createElement('p');
+        para.textContent = 'Fred is the best';
+
+        sect.appendChild(para);
+
+        const text = document.createTextNode(' -- no one is better than Fred');
+
+        //iterarte thorugh all paragraphs and add text to it
+        const textAll = document.querySelectorAll('p');
+        textAll.forEach(
+            val => {
+                //const text = document.createTextNode(' -- no one is better than Fred');
+                val.appendChild(text);
+            }
+        )
+
+        document.querySelector('p:last-of-type').remove();
+
+        const p = document.querySelector('p');
+        // p.style.color = 'white';
+        // p.style.backgroundColor = 'black';
+        // p.style.padding = '10px';
+        // p.style.width = '250px';
+        // p.style.textAlign = 'center';
+        //p.setAttribute('class', 'highlight');
+        // p.classList.add('highlight');
+
+        // console.log(window.innerHeight);
+        // console.log(window.innerWidth);
+
+        p.onmouseover = function () {
+            p.classList.add('highlight');
+        };
+
+        p.onmouseleave = function () {
+            p.classList.remove('highlight');
+        };
+
+        const dino = document.querySelector('img');
+
+        dino.onclick = function () {
+            const para = document.createElement('p');
+            para.textContent = 'Fred is the best';
+
+            sect.appendChild(para);
+
+        };
+
+    </script>
+</body>
+
+</html>
