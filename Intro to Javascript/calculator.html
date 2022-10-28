@@ -120,17 +120,19 @@
         result = result.substring(0, result.length - 1)
         const indexOp = operatorIndex(result)
         const op = result.substring(indexOp, indexOp + 1)
-        let num1 = parseInt(result.substring(0, indexOp))
-        let num2 = parseInt(result.substring(indexOp + 1, result.length))
-        /*
-        console.log(result);
-        if(isNaN(num2)){
+        let num1 = Number(result.substring(0, indexOp))
+        let num2 = Number(result.substring(indexOp + 1, result.length))
+
+        console.log(num2);
+        console.log(num1);
+
+        if (num2 === 0) {
             result = 'ERROR'
             answer.textContent = result;
             return;
         }
-        */
-        for (var i = indexOp; i <= result.length; i++) {
+
+        for (var i = indexOp + 1; i <= result.length; i++) {
             if (result[i] == op) {
                 result = 'ERROR';
                 console.log(result);
