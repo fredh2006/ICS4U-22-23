@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standings </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <h1>Worlds Tracker</h1>
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href = "standings.html">
+              Standings
+            </a>
+      
+            <a class="navbar-item" href = "schedule.html">
+              Schedule
+            </a>
+          </div>
+        </div>
+      </nav>
+    <section class="container">
+        <div class="columns mt-5">
+            <div class="column is-half">
+                <div class="card">
+                    <header class="card-header-title">
+                        Group A
+                    </header>
+                    <div class="card-content">
+                        <table id="groupA" class="table is-striped">
+                            <thead>
+                                <tr>
+                                    <th onclick = "sort('pos', 'A')">Pos</th>
+                                    <th onclick="sort('Name', 'A')" class = "name" >Name</th>
+                                    <th onclick="sort('W', 'A')">Wins</th>
+                                    <th onclick = "sort('L', 'A')">Losses</th>
+                                    <th onclick = "sort('pct', 'A')">PCT</th>
+                                    <th onclick = "sort('streak', 'A')">Streak</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="card">
+                    <header class="card-header-title">
+                        Group B
+                    </header>
+                    <div class="card-content">
+                        <table id="groupB" class="table is-striped">
+                            <thead>
+                                <th onclick = "sort('pos', 'B')">Pos</th>
+                                <th onclick="sort('Name', 'B')" class = "name" >Name</th>
+                                <th onclick="sort('W', 'B')">Wins</th>
+                                <th onclick = "sort('L', 'B')">Losses</th>
+                                <th onclick = "sort('pct', 'B')">PCT</th>
+                                <th onclick = "sort('streak', 'B')">Streak</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns mt-5">
+            <div class="column is-half">
+                <div class="card">
+                    <header class="card-header-title">
+                        Group C
+                    </header>
+                    <div class="card-content">
+                        <table id="groupC" class="table is-striped">
+                            <thead>
+                                <tr>
+                                    <th onclick = "sort('pos', 'C')">Pos</th>
+                                    <th onclick="sort('Name', 'C')" class = "name" >Name</th>
+                                    <th onclick="sort('W', 'C')">Wins</th>
+                                    <th onclick = "sort('L', 'C')">Losses</th>
+                                    <th onclick = "sort('pct', 'C')">PCT</th>
+                                    <th onclick = "sort('streak', 'C')">Streak</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-half">
+                <div class="card">
+                    <header class="card-header-title">
+                        Group D
+                    </header>
+                    <div class="card-content">
+                        <table id="groupD" class="table is-striped">
+                            <thead>
+                                <tr>
+                                    <th onclick = "sort('pos', 'D')">Pos</th>
+                                    <th onclick="sort('Name', 'D')" class = "name" >Name</th>
+                                    <th onclick="sort('W', 'D')">Wins</th>
+                                    <th onclick = "sort('L', 'D')">Losses</th>
+                                    <th onclick = "sort('pct', 'D')">PCT</th>
+                                    <th onclick = "sort('streak', 'D')">Streak</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+<script src="standings.js"></script>
+</html>
