@@ -2,45 +2,70 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <title>Games</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
 </head>
 
-<body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item">
-                <h1>Worlds Tracker</h1>
-            </a>
+<body class="black">
+  <nav class="navbar">
+    <div class="container">
+      <ul class="nav">
+        <li>
+          <a href="home.html">Home</a>
+        </li>
+        <li>
+          <a href="standings.html">Standings</a>
+        </li>
+        <li>
+          <a href="games.html">Games</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <ul class="pagination-list">
+      <li>
+        <a onclick="handleClick(1)" id="1" class="pagination-link is-current big" aria-label="Page 1"
+          aria-current="page">1</a>
+      </li>
+      <li>
+        <a onclick="handleClick(2)" id="2" class="pagination-link big" aria-label="Goto page 2">2</a>
+      </li>
+      <li>
+        <a onclick="handleClick(3)" id="3" class="pagination-link big" aria-label="Goto page 3">3</a>
+      </li>
+      <li>
+        <a onclick="handleClick(4)" id="4" class="pagination-link big" aria-label="Goto page 3">4</a>
+      </li>
+      <li>
+        <a onclick="handleClick(5)" id="5" class="pagination-link big" aria-label="Goto page 3">5</a>
+      </li>
+      <li>
+        <a onclick="handleClick(6)" id="6" class="pagination-link big" aria-label="Goto page 3">6</a>
+      </li>
+      <li>
+        <a onclick="handleClick(7)" id="7" class="pagination-link big" aria-label="Goto page 3">7</a>
+      </li>
+      <li>
+        <a onclick="handleClick(8)" id="8" class="pagination-link big" aria-label="Goto page 3">8</a>
+      </li>
+    </ul>
+  </nav>
+  <nav class="nav">
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
+    <div class="pagination-lister">
 
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="standings.html">
-                    Standings
-                </a>
+    </div>
 
-                <a class="navbar-item" href="schedule.html">
-                    Schedule
-                </a>
-            </div>
-        </div>
-    </nav>
+  </nav>
+  <section class="container" id="container">
+  </section>
 
-    <section class="container" id = "container">
-    </section>
 </body>
-<script src="games.js">
-</script>
+<script src="js/games.js"></script>
 
 </html>
