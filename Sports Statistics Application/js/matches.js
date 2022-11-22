@@ -2,35 +2,22 @@ const dataString = localStorage.getItem('teams');
 const teams = JSON.parse(dataString)
 let params = (new URL(document.location)).searchParams;
 const team = teams.filter(team => team.id == params.get('id'));
-const groupAF = localStorage.getItem('groupA');
-const groupA = JSON.parse(groupAF)
-const groupBF = localStorage.getItem('groupB');
-const groupB = JSON.parse(groupBF)
-const groupCF = localStorage.getItem('groupC');
-const groupC = JSON.parse(groupCF)
-const groupDF = localStorage.getItem('groupD');
-const groupD = JSON.parse(groupDF)
-localStorage.setItem('teams', JSON.stringify(teams))
-localStorage.setItem('groupA', JSON.stringify(groupA))
-localStorage.setItem('groupB', JSON.stringify(groupB))
-localStorage.setItem('groupC', JSON.stringify(groupC))
-localStorage.setItem('groupD', JSON.stringify(groupD))
-
-displayTeam()
+let totalGames = [];
+const paginationNumbers = document.querySelector('.pagination-list')
+const paginationLimit = 8;
+let currentPage = 1;
 
 function displayTeam() {
     console.log(team);
     document.querySelector('#container').textContent = team[0].name;
  }
 
-displayGames();
-
 function displayGames(){
     let counter = 0;
     let section = document.querySelector('#container');
     let column;
     team[0].games.forEach((gameData)=>{
-        console.log(gameData);
+        totalGames.push(gameData)
         if(counter%4==0){
         column = document.createElement('div')
         column.setAttribute('class', 'columns')
@@ -67,4 +54,82 @@ function displayGames(){
         card.appendChild(score)
         counter++;
     })
+    createPagination();
 }
+
+function createPagination(){
+    console.log(totalGames);
+    const pageCount = Math.ceil(totalGames.length/paginationLimit)
+    console.log(pageCount);
+    for(let i = 0; i<pageCount; i++){
+        let li = document.createElement('li')
+        li.classList.add('small2')
+        let a = document.createElement('a')
+        a.textContent = i+1;
+        a.classList.add('pagination-link')
+        a.classList.add('small')
+        a.setAttribute("page-index", i+1)
+        paginationNumbers.appendChild(li)
+        li.appendChild(a)
+    }
+    setCurrentPage(1)
+    document.querySelectorAll('.small').forEach((link)=>{
+        let page = Number(link.textContent)
+        if(page){
+            console.log(page);
+            link.addEventListener("click",()=>{
+                setCurrentPage(page)
+            })
+        }
+})
+}
+
+function deleteSmallPagination(){
+    let smallPagination = document.querySelectorAll('.small2')
+    smallPagination.forEach(page=>{
+        paginationNumbers.removeChild(page)
+    })
+}
+
+function setCurrentPage(pageNum){
+    console.log(pageNum);
+    currentPage = pageNum;
+    console.log(currentPage);
+    handleActivePageNumber();
+    const prevRange = (pageNum - 1) * paginationLimit;
+    const currRange = pageNum * paginationLimit;
+    let allGames = document.querySelectorAll('.card')
+    allGames.forEach((game,index)=>{
+        game.classList.add('hidden')
+        if (index >= prevRange && index < currRange) {
+            game.classList.remove("hidden");
+          }
+    })
+}
+
+window.addEventListener('load',()=>{
+    displayTeam()
+    displayGames()
+    setCurrentPage(1)
+    document.querySelectorAll('.small').forEach((link)=>{
+        let page = Number(link.textContent)
+        if(page){
+            console.log(page);
+            link.addEventListener("click",()=>{
+                setCurrentPage(page)
+            })
+        }
+})
+})
+
+const handleActivePageNumber = () => {
+    console.log(currentPage);
+    document.querySelectorAll(".small").forEach((link) => {
+      link.classList.remove("is-current");
+       
+      const pageIndex = Number(link.textContent)
+      if (pageIndex == currentPage) {
+        link.classList.add("is-current");
+      }
+    });
+  };

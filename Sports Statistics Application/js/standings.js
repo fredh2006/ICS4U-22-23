@@ -11,78 +11,100 @@ let descendingB = true;
 let descendingC = true;
 let descendingD = true;
 
-localStorage.setItem('gameCounter', 0)
-gameCounter = localStorage.getItem('gameCounter')
-
 function handleClick() {
-    let filler = document.querySelector('.G')
-    let filler1 = document.querySelector('.T1')
-    let filler2 = document.querySelector('.T2')
-    let filler3 = document.querySelector('.D')
-    let select = document.querySelector('.S')
+    let group = document.querySelector('.group').value.toUpperCase();
+    let team1 = document.querySelector('.team1').value.toUpperCase();
+    let team2 = document.querySelector('.team2').value.toUpperCase();
+    let select = document.querySelector('.select-options')
     let option = select.options[select.selectedIndex]
     let win = option.value;
-    console.log(option);
-    let group = filler.value.toUpperCase();
-    let team1 = filler1.value.toUpperCase();
-    let team2 = filler2.value.toUpperCase();
-    console.log(team1);
-    console.log(team2);
-    let day = filler3.value;
-    if (group.length == 0 || team1.length == 0 || team2.length == 0 || (day < 1 || day > 8)) {
+    let day = (+(document.querySelector('.day').value));
+    if (group.length == 0 || team1.length == 0 || team2.length == 0 || day < 1 || day > 8||!(Number.isInteger(day))) {
         alert("Please follow and fill all the fields")
-        const inputs = document.querySelectorAll('.input')
-        inputs.forEach(input => {
-            input.value = '';
-        })
-        return false;
+        deleteInputs();
+        return false
     }
-    let teams = JSON.parse(localStorage.getItem('teams'))
     if (group.toUpperCase() === 'A') {
-        if ((team1 === "T1" || team1 === "EDWARD GAMING" || team1 === "FNATIC" || team1 === "CLOUD 9") &&
-            (team2 != team1 && (team2 === "T1" || team2 === "EDWARD GAMING" || team2 === "FNATIC" || team2 === "CLOUD 9"))) {
+        if (checkGroupValidity(team1, team2, "A")) {
             let groupA = JSON.parse(localStorage.getItem('groupA'))
-            determineGame(team1, team2, day, groupA, teams, win, "A")
+            determineGame(team1, team2, day, groupA, teamData, win, "A")
         } else {
             alert("Please Pick a team from Group A")
         }
     } else if (group === 'B') {
-        if ((team1 === "JD GAMING" || team1 === "DWG KIA" || team1 === "EVIL GENIUSES" || team1 === "G2 ESPORTS") && (team2 != team1 &&
-            (team2 === "JD GAMING" || team2 === "DWG KIA" || team2 === "EVIL GENIUSES" || team2 === "G2 ESPORTS"))) {
-            let groupA = JSON.parse(localStorage.getItem('groupB'))
-            determineGame(team1, team2, day, groupA, teams, win, "B")
+        if (checkGroupValidity(team1, team2, "B")) {
+            let groupB = JSON.parse(localStorage.getItem('groupB'))
+            determineGame(team1, team2, day, groupB, teamData, win, "B")
         } else {
             alert("Please Pick a team from Group B")
         }
     } else if (group === 'C') {
-        if ((team1 === "DRX" || team1 === "ROGUE" || team1 === "TOP ESPORTS" || team1 === "GAM ESPORTS") &&
-            (team2 != team1 && (team2 === "DRX" || team2 === "ROGUE" || team2 === "TOP ESPORTS" || team2 === "GAM ESPORTS"))) {
-            let groupA = JSON.parse(localStorage.getItem('groupC'))
-            determineGame(team1, team2, day, groupA, teams, win, "C")
+        if (checkGroupValidity(team1, team2, "C")) {
+            let groupC = JSON.parse(localStorage.getItem('groupC'))
+            determineGame(team1, team2, day, groupC, teamData, win, "C")
         } else {
             alert("Please Pick a team from Group C")
         }
     } else if (group === "D") {
-        if ((team1 === "GEN. G" || team1 === "ROYAL NEVER GIVE UP" || team1 === "CTBC FLYING OYSTER" || team1 === "100 THIEVES") &&
-            (team2 != team1 && (team2 === "GEN. G" || team2 === "ROYAL NEVER GIVE UP" || team2 === "CTBC FLYING OYSTER" || team2 === "100 THIEVES"))) {
-            let groupA = JSON.parse(localStorage.getItem('groupD'))
-            determineGame(team1, team2, day, groupA, teams, win, "D")
+        if (checkGroupValidity(team1, team2, "D")) {
+            let groupD = JSON.parse(localStorage.getItem('groupD'))
+            determineGame(team1, team2, day, groupD, teamData, win, "D")
         } else {
             alert("Please Pick a team from Group D")
         }
     } else {
         alert("Please enter a valid group")
     }
+    deleteInputs();
+    return true;
+}
+
+function deleteInputs(){
     const inputs = document.querySelectorAll('.input')
     inputs.forEach(input => {
         input.value = '';
     })
-    return true;
+}
+
+function checkGroupValidity(team1, team2, group){
+    if(group == "A"){
+        if ((team1 === "T1" || team1 === "EDWARD GAMING" || team1 === "FNATIC" || team1 === "CLOUD 9") &&
+            (team2 != team1 && (team2 === "T1" || team2 === "EDWARD GAMING" || team2 === "FNATIC" || team2 === "CLOUD 9"))) {
+                return true;
+            }
+    }else if(group =="B"){
+        if ((team1 === "JD GAMING" || team1 === "DWG KIA" || team1 === "EVIL GENIUSES" || team1 === "G2 ESPORTS") && (team2 != team1 &&
+            (team2 === "JD GAMING" || team2 === "DWG KIA" || team2 === "EVIL GENIUSES" || team2 === "G2 ESPORTS"))) {
+                return true;
+            }
+    }else if(group =="C"){
+        if ((team1 === "DRX" || team1 === "ROGUE" || team1 === "TOP ESPORTS" || team1 === "GAM ESPORTS") &&
+            (team2 != team1 && (team2 === "DRX" || team2 === "ROGUE" || team2 === "TOP ESPORTS" || team2 === "GAM ESPORTS"))) {
+                return true;
+            }
+    }else if(group =="D"){
+        if ((team1 === "GEN. G" || team1 === "ROYAL NEVER GIVE UP" || team1 === "CTBC FLYING OYSTER" || team1 === "100 THIEVES") &&
+        (team2 != team1 && (team2 === "GEN. G" || team2 === "ROYAL NEVER GIVE UP" || team2 === "CTBC FLYING OYSTER" || team2 === "100 THIEVES"))) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function IDFromName(teamName, group){
+    let id;
+
+    group.forEach(team=>{
+        if(team.name.toUpperCase() === teamName){
+            id = team.id
+        }
+    })
+    return id;
 }
 
 function determineGame(team1, team2, day, group, teams, win, groupLetter) {
-    let ID1;
-    let ID2;
+    let ID1 = IDFromName(team1, group)
+    let ID2 = IDFromName(team2, group)
     let win1;
     let win2;
     let num;
@@ -95,43 +117,13 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
     }
     if (groupLetter === 'A') {
         num=0;
-        groupA.forEach(team => {
-            if (team.name.toUpperCase() === team1) {
-                ID1 = team.id
-            } if (team.name.toUpperCase() === team2) {
-                ID2 = team.id
-            }
-        })
     } else if (groupLetter === "B") {
         num=4;
-        groupB.forEach(team => {
-            if (team.name.toUpperCase() === team1) {
-                ID1 = team.id
-            } if (team.name.toUpperCase() === team2) {
-                ID2 = team.id
-            }
-        })
     } else if (groupLetter === "C") {
         num=8;
-        groupC.forEach(team => {
-            if (team.name.toUpperCase() === team1) {
-                ID1 = team.id
-            } if (team.name.toUpperCase() === team2) {
-                ID2 = team.id
-            }
-        })
     } else if (groupLetter === "D") {
         num=12;
-        groupD.forEach(team => {
-            if (team.name.toUpperCase() === team1) {
-                ID1 = team.id
-            } if (team.name.toUpperCase() === team2) {
-                ID2 = team.id
-            }
-        })
     }
-    console.log(ID1);
-    console.log(ID2);
     let gameCounter = localStorage.getItem('gameCounter')
     gameCounter++;
     localStorage.setItem('gameCounter', gameCounter)
@@ -150,21 +142,12 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
         'id': gameCounter
     }
 
-    
-    for (let i = 0; i < teams.length; i++) {
-        if (team1 === teams[i].name.toUpperCase()) {
-            console.log(team1);
-            teams[i].games.unshift(game1)
-        } else if (team2 === teams[i].name.toUpperCase()) {
-            console.log(team2);
-            teams[i].games.unshift(game2)
-        }
-    }
+    group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
+
     for (let i = 0; i < group.length; i++) {
         if (team1 === group[i].name.toUpperCase()) {
-            console.log(team1);
-            console.log(group[i]);
             group[i].games.unshift(game1)
+            teams[i+num].games.unshift(game1)
             if (win1) {
                 group[i].W++;
                 teams[i+num].W++;
@@ -195,9 +178,8 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
                 }
             }
         } else if (team2 === group[i].name.toUpperCase()) {
-            console.log(team2);
-            console.log(group[i]);
             group[i].games.unshift(game2)
+            teams[i+num].games.unshift(game2)
             if (win2) {
                 group[i].W++;
                 teams[i+num].W++;
@@ -230,7 +212,7 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
         }
     }
     group = sortGroupWins(group, team1, team2);
-
+    group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
 
     createTable(group, groupLetter)
     if (groupLetter === "A") {
@@ -245,6 +227,7 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
     localStorage.setItem('teams', JSON.stringify(teams))
 
 }
+
 
 function sortGroupWins(group, team1, team2) {
     group = group.sort((teamA, teamB) => teamB.W - teamA.W)
@@ -286,120 +269,44 @@ createTable(groupB, 'B')
 createTable(groupC, 'C')
 createTable(groupD, 'D')
 
-function createTable(group, groupNum) {
-    if (groupNum == 'A') {
-        let tableBody = document.querySelector('#groupA tbody')
-        tableBody.replaceChildren();
-        group.forEach((team) => {
-            const row = document.createElement('tr');
-            let td = document.createElement('td');
-            td.textContent = team.pos;
-            row.appendChild(td);
-            td = document.createElement('td');
-            let link = document.createElement('a');
-            link.href = 'matches.html?id=' + team.id;
-            link.textContent = team.name;
-            td.appendChild(link);
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = team.W;
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = team.L;
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = (team.W / (team.W + team.L) * 100).toFixed(2) + "%"
-            row.appendChild(td)
-            td = document.createElement('td')
-            td.textContent = team.streak;
-            row.appendChild(td)
-            tableBody.appendChild(row);
-        })
-    } else if (groupNum == 'B') {
-        let tableBody = document.querySelector('#groupB tbody')
-        tableBody.replaceChildren();
-        group.forEach((team) => {
-            const row = document.createElement('tr');
-            let td = document.createElement('td');
-            td.textContent = team.pos;
-            row.appendChild(td);
-            td = document.createElement('td');
-            let link = document.createElement('a');
-            link.href = 'matches.html?id=' + team.id;
-            link.textContent = team.name;
-            td.appendChild(link);
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = team.W;
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = team.L;
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = (team.W / (team.W + team.L) * 100).toFixed(2) + "%"
-            row.appendChild(td)
-            td = document.createElement('td')
-            td.textContent = team.streak;
-            row.appendChild(td)
-            tableBody.appendChild(row);
-        })
-    } else if (groupNum == 'C') {
-        let tableBody = document.querySelector('#groupC tbody')
-        tableBody.replaceChildren();
-        group.forEach((team) => {
-            const row = document.createElement('tr');
-            let td = document.createElement('td');
-            td.textContent = team.pos;
-            row.appendChild(td);
-            td = document.createElement('td');
-            let link = document.createElement('a');
-            link.href = 'matches.html?id=' + team.id;
-            link.textContent = team.name;
-            td.appendChild(link);
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = team.W;
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = team.L;
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = (team.W / (team.W + team.L) * 100).toFixed(2) + "%"
-            row.appendChild(td)
-            td = document.createElement('td')
-            td.textContent = team.streak;
-            row.appendChild(td)
-            tableBody.appendChild(row);
-        })
-    } else if (groupNum == 'D') {
-        let tableBody = document.querySelector('#groupD tbody')
-        tableBody.replaceChildren();
-        group.forEach((team) => {
-            const row = document.createElement('tr');
-            let td = document.createElement('td');
-            td.textContent = team.pos;
-            row.appendChild(td);
-            td = document.createElement('td');
-            let link = document.createElement('a');
-            link.href = 'matches.html?id=' + team.id;
-            link.textContent = team.name;
-            td.appendChild(link);
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = team.W;
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = team.L;
-            row.appendChild(td)
-            td = document.createElement('td');
-            td.textContent = (team.W / (team.W + team.L) * 100).toFixed(2) + "%"
-            row.appendChild(td)
-            td = document.createElement('td')
-            td.textContent = team.streak;
-            row.appendChild(td)
-            tableBody.appendChild(row);
-        })
+function createTable(group, groupNum) {    
+    let tableBody;
+    if(groupNum == 'A'){
+        tableBody = document.querySelector('#groupA tbody')
+    }else if(groupNum == 'B'){
+        tableBody =  document.querySelector('#groupB tbody')
+    }else if(groupNum == 'C'){
+        tableBody =  document.querySelector('#groupC tbody')
     }
+    else if(groupNum == 'D'){
+        tableBody =  document.querySelector('#groupD tbody')
+    }
+    tableBody.replaceChildren();
+    group.forEach((team) => {
+        const row = document.createElement('tr');
+        let td = document.createElement('td');
+        td.textContent = team.pos;
+        row.appendChild(td);
+        td = document.createElement('td');
+        let link = document.createElement('a');
+        link.href = 'matches.html?id=' + team.id;
+        link.textContent = team.name;
+        td.appendChild(link);
+        row.appendChild(td)
+        td = document.createElement('td');
+        td.textContent = team.W;
+        row.appendChild(td)
+        td = document.createElement('td');
+        td.textContent = team.L;
+        row.appendChild(td)
+        td = document.createElement('td');
+        td.textContent = (team.W / (team.W + team.L) * 100).toFixed(2) + "%"
+        row.appendChild(td)
+        td = document.createElement('td')
+        td.textContent = team.streak;
+        row.appendChild(td)
+        tableBody.appendChild(row);
+    })
 }
 
 function sort(field, groupNum) {
@@ -1345,7 +1252,7 @@ team['games'] = [
         'opp': 'GDT3',
         'win': true,
         'type': 'normal',
-        'id': '8-GDT2-GDT3-GDT3-GDT2'
+        'id': '3-GDT2-GDT3-GDT3-GDT2'
     },
     {
         'day': 1,
@@ -1464,5 +1371,10 @@ team['games'] = [
     }
 ];
 teams.push(team);
-localStorage.setItem('teams', JSON.stringify(teamData))
+localStorage.setItem('teams', JSON.stringify(teams))
+localStorage.setItem('groupA', JSON.stringify(groupA))
+localStorage.setItem('groupB', JSON.stringify(groupB))
+localStorage.setItem('groupC', JSON.stringify(groupC))
+localStorage.setItem('groupD', JSON.stringify(groupD))
+
 
