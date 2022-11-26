@@ -340,14 +340,27 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
         return (teamA.id < teamB.id) ? -1 : 1
     });
     if (groupLetter === "A") {
+        group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
         localStorage.setItem('groupA', JSON.stringify(group))
     } else if (groupLetter === "B") {
+        group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
         localStorage.setItem('groupB', JSON.stringify(group))
     } else if (groupLetter === "C") {
+        group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
         localStorage.setItem('groupC', JSON.stringify(group))
     } else if (groupLetter === "D") {
+        group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
         localStorage.setItem('groupD', JSON.stringify(group))
     }
+    let index = 0;
+    let smallCounter = 0;
+    teams.forEach(team=>{
+        if(team.id.indexOf(groupLetter)>=0){
+            teams.splice(index, 1, group[smallCounter])
+            smallCounter++;
+        }
+        index++;
+    })
     localStorage.setItem('teams', JSON.stringify(teams))
 
 }
@@ -438,7 +451,7 @@ function createTable(group, groupNum) {
     if (groupNum == 'A') {
         tableBody = document.querySelector('#groupA tbody')
     } else if (groupNum == 'B') {
-        tableBody = document.querySelector('#groupB tbody')
+        tableBody = document.querySelector('#groupB tbody') 
     } else if (groupNum == 'C') {
         tableBody = document.querySelector('#groupC tbody')
     }
@@ -501,19 +514,19 @@ function sort(field, groupNum) {
     if (groupNum == 'A') {
         tableBody = document.querySelector('#groupA tbody')
         descending = descendingA;
-        group = groupA;
+        group = JSON.parse(localStorage.getItem('groupA'))
     } else if (groupNum == 'B') {
         tableBody = document.querySelector('#groupB tbody')
         descending = descendingB;
-        group = groupB;
+        group = JSON.parse(localStorage.getItem('groupB'))
     } else if (groupNum == 'C') {
         tableBody = document.querySelector('#groupC tbody')
         descending = descendingC;
-        group = groupC;
+        group = JSON.parse(localStorage.getItem('groupC'))
     } else if (groupNum == 'D') {
         tableBody = document.querySelector('#groupD tbody')
         descending = descendingD;
-        group = groupD;
+        group = JSON.parse(localStorage.getItem('groupD'))
     }
     if (descending) {
         if (field == "pos") {
@@ -564,5 +577,6 @@ function sort(field, groupNum) {
 
 //sets teams local storage as the current teams to make sure it is updated incase something changes it though code//
 localStorage.setItem('teams', JSON.stringify(teamData))
+
 
 
