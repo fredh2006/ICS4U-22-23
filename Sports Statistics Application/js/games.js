@@ -1,26 +1,28 @@
 let buttons = document.querySelectorAll('a')
-console.log(buttons);
-let section = document.querySelector('#container')
+let section = document.querySelector('.container-games')
 let totalGames = [];
-const paginationNumbers = document.querySelector('.pagination-lister')
+const paginationNumbers = document.querySelector('.mini-pagination')
 const paginationLimit = 8;
 let currentPage = 1;
+const dataString = localStorage.getItem('teams');
+const teams = JSON.parse(dataString)
 
+/*handles a pagination list click*/
+/*identifies current page and creates new pagination and games*/
 function handleClick(num) {
-    console.log("hello");
     buttons.forEach(button => {
         if (button.classList.contains("is-current")) {
             button.classList.remove("is-current")
         }
     })
     let clickedButton = document.getElementById(num)
-    console.log(clickedButton);
     clickedButton.classList.add("is-current")
     deleteSmallPagination()
-    createSchedule();
-}   
+    createGames();
+}
 
-function createSchedule() {
+/*creates the title of the page*/
+function createGames() {
     let currentPage;
     buttons.forEach(button => {
         if (button.classList.contains("is-current")) {
@@ -28,21 +30,23 @@ function createSchedule() {
         }
     })
     let pageTitle = document.createElement('div')
-    pageTitle.textContent = "Day: " + currentPage;
+    pageTitle.textContent = "Day " + currentPage + " Games";
     pageTitle.classList.add('white')
+    pageTitle.classList.add('mb-3')
     section.replaceChildren(pageTitle)
     displayGames(currentPage)
 }
 
-const dataString = localStorage.getItem('teams');
-const teams = JSON.parse(dataString)
-
+/*displays games only for the certain day*/
+/*only displays 1 game per both teams*/
+/*puts the score and teams on a card that's in columns*/
+/*puts columns in a big column, and creates a new big column every 4 columns*/
 function displayGames(day) {
     let column;
     let gameArr = [];
     let counter = 0;
     totalGames = [];
-    let section = document.getElementById("container")
+    let section = document.querySelector('.container-games')
     teams.forEach(team => {
         team.games.forEach(game => {
             if (game.day == day) {
@@ -51,7 +55,6 @@ function displayGames(day) {
                     column.setAttribute('class', 'columns')
                 }
                 if (gameArr.includes(game.id)) {
-                    console.log('hello');
                 } else {
                     gameArr.push(game.id)
                     totalGames.push(game)
@@ -104,9 +107,10 @@ function displayGames(day) {
     createPagination()
 }
 
-
-function createPagination(){
-    const pageCount = Math.ceil(totalGames.length/paginationLimit)
+/*creates pagination links depending on amount of games*/
+/*this is pagination for games on certain days*/
+function createPagination() {
+    const pageCount = Math.ceil(totalGames.length / paginationLimit)
     let li = document.createElement('li')
     li.classList.add('small2')
     let a = document.createElement('a')
@@ -116,14 +120,14 @@ function createPagination(){
     a.classList.add('fb')
     paginationNumbers.appendChild(li)
     li.appendChild(a)
-    for(let i = 0; i<pageCount; i++){
+    for (let i = 0; i < pageCount; i++) {
         let li = document.createElement('li')
         li.classList.add('small2')
         let a = document.createElement('a')
-        a.textContent = i+1;
+        a.textContent = i + 1;
         a.classList.add('pagination-link')
         a.classList.add('small')
-        a.setAttribute("page-index", i+1)
+        a.setAttribute("page-index", i + 1)
         paginationNumbers.appendChild(li)
         li.appendChild(a)
     }
@@ -137,7 +141,7 @@ function createPagination(){
     paginationNumbers.appendChild(liTwo)
     liTwo.appendChild(aTwo)
     setCurrentPage(1)
-    document.querySelectorAll('.small').forEach((link)=>{
+    document.querySelectorAll('.small').forEach((link) => {
         let page = Number(link.textContent)
         if (link.classList.contains('fb')) {
             link.addEventListener("click", () => {
@@ -162,51 +166,55 @@ function createPagination(){
                 setCurrentPage(page)
             })
         }
-})
+    })
 }
 
-function deleteSmallPagination(){
+/*deletes pagination when going to the next day*/
+function deleteSmallPagination() {
     let smallPagination = document.querySelectorAll('.small2')
-    smallPagination.forEach(page=>{
+    smallPagination.forEach(page => {
         paginationNumbers.removeChild(page)
     })
 }
 
-function setCurrentPage(pageNum){
+/*sets the current page of the pagination to show all and the correct amount of games*/
+function setCurrentPage(pageNum) {
     currentPage = pageNum;
     handleActivePageNumber();
     const prevRange = (pageNum - 1) * paginationLimit;
     const currRange = pageNum * paginationLimit;
     let allGames = document.querySelectorAll('.card')
-    allGames.forEach((game,index)=>{
+    allGames.forEach((game, index) => {
         game.classList.add('hidden')
         if (index >= prevRange && index < currRange) {
             game.classList.remove("hidden");
-          }
+        }
     })
 }
 
-window.addEventListener('load',()=>{
-    createSchedule();
+/*calls functions onload*/
+window.addEventListener('load', () => {
+    createGames();
     setCurrentPage(1)
-    document.querySelectorAll('.small').forEach((link)=>{
+    document.querySelectorAll('.small').forEach((link) => {
         let page = Number(link.textContent)
-        if(page){
-            link.addEventListener("click",()=>{
+        if (page) {
+            link.addEventListener("click", () => {
                 setCurrentPage(page)
             })
         }
-})
+    })
 })
 
+/*identifies the active page in pagination*/
 const handleActivePageNumber = () => {
     document.querySelectorAll(".small").forEach((link) => {
-      link.classList.remove("is-current");
-       
-      const pageIndex = Number(link.textContent)
-      if (pageIndex == currentPage) {
-        link.classList.add("is-current");
-      }
+        link.classList.remove("is-current");
+
+        const pageIndex = Number(link.textContent)
+        if (pageIndex == currentPage) {
+            link.classList.add("is-current");
+        }
     });
-  };
-  
+};
+

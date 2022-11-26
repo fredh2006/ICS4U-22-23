@@ -5,37 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Standings </title>
+    <title>Standings</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body class="black">
+
     <nav class="navbar">
         <div class="container">
             <ul class="nav">
                 <li>
                     <a href="home.html">Home</a>
                 </li>
-                <li>
+                <li class="need-margin">
                     <a href="standings.html">Standings</a>
                 </li>
-                <li>
+                <li class="need-margin">
                     <a href="games.html">Games</a>
                 </li>
-
             </ul>
         </div>
     </nav>
 
 
-    <section class="container container-button" >
-               <button class="button inactive">Add Game</button>
-                    <div class="for-form">
-
-            </div>
+    <section class="container container-button">
+        <button class="button inactive">Add Game</button>
+        <div class="for-form mt-3">
+        </div>
     </section>
+
     <section class="container container-table">
+
         <div class="columns mt-5">
             <div class="column is-half is-centered">
                 <div class="card">
@@ -48,12 +49,12 @@
                                 <tr class="rows">
                                     <th onclick="sort('pos', 'A')">Pos</th>
                                     <th>Logo</th>
-                                    <th onclick = "sort('Name', 'A')" class = "name">Name</th>
-                                    <th onclick = "sort('Name', 'A')" class = "hidden">Name</th>
+                                    <th onclick="sort('Name', 'A')" class="name">Name</th>
+                                    <th onclick="sort('Name', 'A')" class="hidden">Name</th>
                                     <th onclick="sort('W', 'A')">Wins</th>
                                     <th onclick="sort('L', 'A')">Losses</th>
-                                    <th onclick="sort('pct', 'A')" class = "pct">PCT</th>
-                                    <th onclick="sort('streak', 'A')" class = "streak">Streak</th>
+                                    <th onclick="sort('pct', 'A')" class="pct">PCT</th>
+                                    <th onclick="sort('streak', 'A')" class="streak">Streak</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,6 +63,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="column is-half">
                 <div class="card">
                     <header class="card-header-title">
@@ -74,11 +76,11 @@
                                     <th onclick="sort('pos', 'B')">Pos</th>
                                     <th>Logo</th>
                                     <th onclick="sort('Name', 'B')" class="name">Name</th>
-                                    <th onclick = "sort('Name', 'A')" class = "hidden">Name</th>
+                                    <th onclick="sort('Name', 'A')" class="hidden">Name</th>
                                     <th onclick="sort('W', 'B')">Wins</th>
                                     <th onclick="sort('L', 'B')">Losses</th>
-                                    <th onclick="sort('pct', 'B')" class = "pct">PCT</th>
-                                    <th onclick="sort('streak', 'B')" class = "streak">Streak</th>
+                                    <th onclick="sort('pct', 'B')" class="pct">PCT</th>
+                                    <th onclick="sort('streak', 'B')" class="streak">Streak</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -88,6 +90,7 @@
                 </div>
             </div>
         </div>
+
         <div class="columns mt-5">
             <div class="column is-half is-centered">
                 <div class="card">
@@ -101,11 +104,11 @@
                                     <th onclick="sort('pos', 'C')">Pos</th>
                                     <th>Logo</th>
                                     <th onclick="sort('Name', 'C')" class="name">Name</th>
-                                    <th onclick = "sort('Name', 'A')" class = "hidden">Name</th>
+                                    <th onclick="sort('Name', 'A')" class="hidden">Name</th>
                                     <th onclick="sort('W', 'C')">Wins</th>
                                     <th onclick="sort('L', 'C')">Losses</th>
-                                    <th onclick="sort('pct', 'C')" class = "pct">PCT</th>
-                                    <th onclick="sort('streak', 'C')" class = "streak">Streak</th>
+                                    <th onclick="sort('pct', 'C')" class="pct">PCT</th>
+                                    <th onclick="sort('streak', 'C')" class="streak">Streak</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -114,6 +117,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="column is-half is-mobile">
                 <div class="card">
                     <header class="card-header-title">
@@ -126,11 +130,11 @@
                                     <th onclick="sort('pos', 'D')">Pos</th>
                                     <th>Logo</th>
                                     <th onclick="sort('Name', 'D')" class="name">Name</th>
-                                    <th onclick = "sort('Name', 'A')" class = "hidden">Name</th>
+                                    <th onclick="sort('Name', 'A')" class="hidden">Name</th>
                                     <th onclick="sort('W', 'D')">Wins</th>
                                     <th onclick="sort('L', 'D')">Losses</th>
-                                    <th onclick="sort('pct', 'D')" class = "pct">PCT</th>
-                                    <th onclick="sort('streak', 'D')" class = "streak">Streak</th>
+                                    <th onclick="sort('pct', 'D')" class="pct">PCT</th>
+                                    <th onclick="sort('streak', 'D')" class="streak">Streak</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -139,6 +143,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
         </div>
     </section>

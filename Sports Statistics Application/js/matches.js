@@ -8,7 +8,7 @@ const paginationLimit = 8;
 let currentPage = 1;
 let biggestPage = []
 
-
+/*adds the teams name and logo to the hero*/
 function addToHero() {
     let hero = document.querySelector('.hero-body')
     let logo = team[0].logo
@@ -20,9 +20,12 @@ function addToHero() {
     hero.appendChild(text)
 }
 
+/*displays games only for the certain team*/
+/*puts the score and teams on a card that's in columns*/
+/*puts columns in a big column, and creates a new big column every 4 columns*/
 function displayGames() {
     let counter = 0;
-    let section = document.querySelector('#container');
+    let section = document.querySelector('.container-matches');
     let column;
     team[0].games.forEach((gameData) => {
         totalGames.push(gameData)
@@ -79,6 +82,7 @@ function displayGames() {
     createPagination();
 }
 
+/*creates pagination links depending on amount of games*/
 function createPagination() {
     paginationNumbers.classList.add('mt-5')
     const pageCount = Math.ceil(totalGames.length / paginationLimit)
@@ -142,13 +146,7 @@ function createPagination() {
     })
 }
 
-function deleteSmallPagination() {
-    let smallPagination = document.querySelectorAll('.small2')
-    smallPagination.forEach(page => {
-        paginationNumbers.removeChild(page)
-    })
-}
-
+/*sets the current page of the pagination to show all and the correct amount of games*/
 function setCurrentPage(pageNum) {
     currentPage = pageNum;
     handleActivePageNumber();
@@ -163,6 +161,7 @@ function setCurrentPage(pageNum) {
     })
 }
 
+/*calls functions onload*/
 window.addEventListener('load', () => {
     addToHero();
     displayGames()
@@ -178,6 +177,7 @@ window.addEventListener('load', () => {
     })
 })
 
+/*identifies the active page in pagination*/
 const handleActivePageNumber = () => {
     console.log(currentPage);
     document.querySelectorAll(".small").forEach((link) => {

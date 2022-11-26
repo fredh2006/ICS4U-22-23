@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&family=Orbitron:wght@600&family=Roboto&display=swap');
+
+/*universal styles*/
+body {
+    overflow: hidden;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: rgb(105, 149, 230);
+}
+
+li {
+    list-style: none;
+}
+
+.black {
+    background-color: #171717;
+}
+
+
+.card-content {
+    color: #fff;
+}
+
+.card {
+    background-color: #171717;
+}
+
+/*misc styles*/
+.need-margin {
+    margin-left: 45px;
+}
+
+.block {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+/*home page showcase*/
+.showcase {
+    padding: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../images/worlds.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.text {
+    color: white;
+    opacity: 0.9;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.text h1 {
+    font-family: 'Bebas Neue';
+    font-size: 28vw;
+}
+
+.text p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    width: 50%;
+    margin-top: -125px;
+}
+
+/*teams page hero*/
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../images/worlds\ banner.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-body {
+    display: flex;
+    align-items: center;
+}
+
+.hero-text {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/*navbar*/
+.navbar .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav li {
+    display: inline;
+}
+
+.navbar a {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    position: relative;
+}
+
+.navbar a:hover {
+    color: rgb(105, 149, 230);
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: rgb(105, 149, 230);
+    bottom: 0;
+    left: 0;
+
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
+
+.navbar a:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+/*standings form*/
+.field {
+    margin-bottom: 10px;
+}
+
+.container-button {
+    margin: 0 5%;
+}
+
+.button:hover {
+    background-color: rgb(105, 149, 230);
+    color: white;
+    border: rgb(105, 149, 230);
+}
+
+.label {
+    color: #fff;
+}
+
+.field.is-grouped {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*standings table*/
+.name {
+    width: 45%;
+}
+
+.rows {
+    background-color: #171717;
+    color: #fff;
+}
+
+
+.table thead th {
+    color: #fff;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table-logo {
+    vertical-align: middle;
+}
+
+/*games*/
+.card-header-title {
+    color: #fff;
+}
+
+.white {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.pagination-list a,
+.mini-pagination a {
+    background-color: white;
+    color: rgb(105, 149, 230);
+}
+
+.pagination-link {
+    background-color: white;
+}
+
+.is-one-quarter .card {
+    background-color: #3e3b3b;
+}
+
+.games-logo {
+    display: inline;
+    width: 50%;
+    height: 50%;
+    padding: 0;
+}
+
+.is-one-quarter .card-header-title {
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+.is-one-quarter .card-content {
+    color: white;
+    text-align: center;
+}
+
+.container-games {
+    height: 103vh;
+}
+
+.white-body {
+    background-color: #171717;
+}
+
+/*media queries*/
+@media(max-width: 660px) {
+    .name {
+        width: 15%;
+    }
+
+    .pct {
+        display: none;
+    }
+
+    .navbar a {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 770px) {
+    .container-table {
+        margin: 0 10px
+    }
+
+    .name {
+        width: 30%;
+    }
+
+    .table-logo {
+        height: 50px;
+        width: 50px;
+    }
+
+    .table {
+        margin: auto;
+    }
+
+    .card-header-title {
+        justify-content: center;
+    }
+
+    .container-button {
+        text-align: center;
+    }
+
+    .for-form {
+        display: block;
+    }
+
+    .streak {
+        display: table-cell;
+    }
+
+    .pct {
+        display: table-cell;
+    }
+
+    .container-table .column {
+        padding: 0.75rem 0;
+    }
+
+    .container-games .columns {
+        margin: 0 5%;
+    }
+
+    .container-games .is-one-quarter {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .white {
+        margin: 0 5%;
+    }
+}
+
+@media (max-width: 875px) {
+    .text h1 {
+        font-family: 'Bebas Neue';
+        font-size: 28vw
+    }
+}
+
+@media(max-width: 1025px) {
+    .pct {
+        display: none;
+    }
+
+    .streak {
+        display: none;
+    }
+
+    .container-games {
+        margin: 0 25px;
+    }
+
+    .container-matches {
+        margin: 0 25px
+    }
+
+    .text p {
+        margin-top: -5vh;
+    }
+}
+
+
+@media(max-width: 1220px) {
+    .table td.active {
+        display: none;
+    }
+
+    .table td.hidden {
+        display: table-cell;
+    }
+
+    .is-one-quarter .card .hidden {
+        display: block;
+    }
+
+    .is-one-quarter .card .active {
+        display: none;
+    }
+}
