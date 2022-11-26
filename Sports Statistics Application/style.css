@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&family=Orbitron:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&family=Orbitron:wght@600&family=Roboto&display=swap');
 
 
 body{
@@ -10,13 +10,13 @@ body{
     width: 45%;
 }
 
-a{
-    color: black;
+.field{
+    margin-bottom: 10px;
 }
 
 .showcase{
     padding: 0;
-    background-image: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),url('./images/worlds3.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),url('./images/worlds.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -24,15 +24,43 @@ a{
     
 }
 
+.hero{
+    background-image: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)), url('./images/worlds\ banner.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-body{
+    display: flex;
+    align-items: center;
+}
+
+.hero-text{
+    display: inline-block;
+    color: white;
+    font-size: 24px;
+}
+
 .navbar{
     background-color: transparent;
 }
+
 
 .navbar .container{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+.container-button{
+    margin: 0 5%;
+}
+
+.button:hover{
+    background-color:  rgb(105, 149, 230);
+    color: white;
+    border:  rgb(105, 149, 230);
 }
 
 .navbar ul{
@@ -58,8 +86,46 @@ a{
     flex-direction: row;
 }
 
-.black .navbar a{
-    color: black;
+.card{
+    background-color: #171717;
+}
+
+.card-header-title{
+    color: #fff;
+}
+
+.black{
+    background-color: #171717;
+}
+
+
+.rows{
+    background-color: #171717;
+    color: #fff;
+}
+
+a{
+    color: #fff;
+}
+
+.label{
+    color: #fff;
+}
+
+.table thead th{
+    color: #fff;
+}
+
+.table td{
+    vertical-align: middle;
+}
+
+.table-logo{
+    vertical-align: middle;
+}
+
+a:hover{
+       color: rgb(105, 149, 230); 
 }
 
 .navbar a:hover{
@@ -102,6 +168,15 @@ a{
     font-size: 28vw;
 }
 
+.field.is-grouped{
+  display: flex;  
+  justify-content: flex-end;
+}
+
+.card-content{
+    color: #fff;
+}
+
 .text p{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
@@ -131,6 +206,53 @@ li{
     display: inline;
 }
 
+.white{
+    color: black;
+    font-size: 24px;
+}
+
+.pagination-list a{
+    background-color: white;
+    color: rgb(105, 149, 230);
+}
+
+.pagination-link{
+    background-color: white;
+}
+
+.is-one-quarter .card{
+    background-color: #3e3b3b;
+}
+
+.games-logo{
+    display: inline;
+    width: 50%;
+    height: 50%;
+}
+
+.is-one-quarter .card-header-title{
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+.is-one-quarter .card-content{
+    color: white;
+    text-align: center;
+}
+
+.container-matches{
+    margin-bottom: 25px;
+}
+
+.container-games{
+    margin-bottom: 25px;
+}
+
+.white-body{
+    background-color: #171717;
+}
+
 @media (max-width: 875px){
     .text h1{
         font-family: 'Bebas Neue';
@@ -141,5 +263,88 @@ li{
     }
     .navbar ul li{
         margin-left: 30px;
+    }
+}
+
+@media(max-width: 1220px){
+    .table td.active{
+        display: none;
+    }
+    .table td.hidden{
+        display: table-cell;
+    }
+    .is-one-quarter .card .hidden{
+        display: block;
+    }
+    .is-one-quarter .card .active{
+        display: none;
+    }
+}
+
+@media(max-width: 1025px){
+    .pct{
+        display: none;
+    }
+    .streak{
+        display: none;
+    }
+    .container-games{
+        margin: 0 25px;
+    }
+    .container-matches{
+        margin: 0 25px
+    }
+}
+
+@media(max-width: 770px){
+    .container-table{
+        margin: 0 10px
+    }
+    .name{
+        width: 30%;
+    }
+    .table-logo{
+        height: 50px;
+        width: 50px;
+    }
+    .table{
+       margin: auto; 
+    }
+    .card-header-title{
+        justify-content: center;
+    }
+    .container-button{
+        text-align: center;
+    }
+    .for-form{
+        display: block;
+    }
+    .streak{
+        display: table-cell;
+    }
+    .pct{
+        display: table-cell;
+    }
+    .container-table .column{
+        padding: 0.75rem 0;
+    }
+    .container-games .columns{
+        margin: 0 5%;
+    }
+    .container-games .is-one-quarter{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .white{
+        margin: 0 5%;
+    }
+}
+
+@media(max-width: 660px){
+    .name{
+        width: 15%;
+    }
+    .pct{
+        display: none;
     }
 }

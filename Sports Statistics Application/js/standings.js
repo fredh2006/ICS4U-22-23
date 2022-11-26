@@ -11,7 +11,169 @@ let descendingB = true;
 let descendingC = true;
 let descendingD = true;
 
-function handleClick() {
+let button = document.querySelector('.button')
+button.addEventListener('click', () => {
+    handleButtonClick();
+})
+
+function handleButtonClick(){
+    let container = document.querySelector('.for-form')
+    if(button.classList.contains('inactive')){
+        button.classList.remove('inactive')
+        button.classList.add('active')
+        button.textContent = "Remove Game"
+    let form = document.createElement('div')
+    form.classList.add('form')
+    container.appendChild(form)
+    let columns = document.createElement('div')
+    columns.classList.add('columns')
+    columns.classList.add('is-mobile')
+    form.appendChild(columns)
+      
+    let columnOne = document.createElement('div')
+    columnOne.classList.add('column')
+    columnOne.classList.add('is-half')
+    let fieldOne = document.createElement('div')
+    fieldOne.classList.add('field')
+    let labelOne = document.createElement('label')
+    labelOne.classList.add('label')
+    labelOne.textContent = "Group";
+    let controlOne = document.createElement('div')
+    controlOne.classList.add('control')
+    let inputOne = document.createElement('input')
+    inputOne.classList.add('input')
+    inputOne.classList.add('group')
+    inputOne.type = "text"
+    inputOne.placeholder = "A, B, C, D"
+
+    columns.appendChild(columnOne)
+    columnOne.appendChild(fieldOne)
+    fieldOne.appendChild(labelOne)
+    labelOne.appendChild(controlOne)
+    labelOne.appendChild(inputOne)
+
+    let columnTwo = document.createElement('div')
+    columnTwo.classList.add('column')
+    columnTwo.classList.add('is-half')
+    let fieldTwo = document.createElement('div')
+    fieldTwo.classList.add('field')
+    let labelTwo = document.createElement('label')
+    labelTwo.classList.add('label')
+    labelTwo.textContent = "Team 1";
+    let controlTwo = document.createElement('div')
+    controlTwo.classList.add('control')
+    let inputTwo = document.createElement('input')
+    inputTwo.classList.add('input')
+    inputTwo.classList.add('team1')
+    inputTwo.type = "text"
+    inputTwo.placeholder = "Pick a team from chosen group"
+
+    columns.appendChild(columnTwo)
+    columnTwo.appendChild(fieldTwo)
+    fieldTwo.appendChild(labelTwo)
+    labelTwo.appendChild(controlTwo)
+    labelTwo.appendChild(inputTwo)
+
+    let columns2 = document.createElement('div')
+    columns2.classList.add('columns')
+    columns2.classList.add('is-mobile')
+    form.appendChild(columns2)
+
+    let columnThree = document.createElement('div')
+    columnThree.classList.add('column')
+    columnThree.classList.add('is-half')
+    let fieldThree = document.createElement('div')
+    fieldThree.classList.add('field')
+    let labelThree = document.createElement('label')
+    labelThree.classList.add('label')
+    labelThree.textContent = "Team 2";
+    let controlThree = document.createElement('div')
+    controlThree.classList.add('control')
+    let inputThree = document.createElement('input')
+    inputThree.classList.add('input')
+    inputThree.classList.add('team2')
+    inputThree.type = "text"
+    inputThree.placeholder = "Pick a team from chosen group"
+        
+    columns2.appendChild(columnThree)
+    columnThree.appendChild(fieldThree)
+    fieldThree.appendChild(labelThree)
+    labelThree.appendChild(controlThree)
+    labelThree.appendChild(inputThree)
+
+    let columnFour = document.createElement('div')
+    columnFour.classList.add('column')
+    columnFour.classList.add('is-half')
+    let fieldFour = document.createElement('div')
+    fieldFour.classList.add('field')
+    let labelFour = document.createElement('label')
+    labelFour.classList.add('label')
+    labelFour.textContent = "Day";
+    let controlFour = document.createElement('div')
+    controlFour.classList.add('control')
+    let inputFour= document.createElement('input')
+    inputFour.classList.add('input')
+    inputFour.classList.add('day')
+    inputFour.type = "text"
+    inputFour.placeholder = "1 - 8"
+
+    columns2.appendChild(columnFour)
+    columnFour.appendChild(fieldFour)
+    fieldFour.appendChild(labelFour)
+    labelFour.appendChild(controlFour)
+    labelFour.appendChild(inputFour)
+    
+    let columnFive = document.createElement('div')
+    columnFive.classList.add('column')
+    let fieldFive = document.createElement('div')
+    fieldFive.classList.add('field')
+    let labelFive = document.createElement('label')
+    labelFive.classList.add('label')
+    labelFive.textContent = "Winner";
+    let controlFive = document.createElement('control')
+    controlFive.classList.add('control')
+    let divFive = document.createElement('div')
+    divFive.classList.add('select')
+    let select = document.createElement('select')
+    select.classList.add('select-options')
+    let option1 = document.createElement('option')
+    option1.textContent = "Team 1"
+    let option2 = document.createElement('option')
+    option2.textContent = "Team 2"
+
+    form.appendChild(fieldFive)
+    fieldFive.appendChild(labelFive)
+    fieldFive.appendChild(controlFive)
+    controlFive.appendChild(divFive)
+    divFive.appendChild(select)
+    select.appendChild(option1)
+    select.appendChild(option2)
+
+    let fieldSix = document.createElement('div')
+    fieldSix.classList.add('field')
+    fieldSix.classList.add('is-grouped')
+    let controlSix = document.createElement('div')
+    controlSix.classList.add('control')
+    let buttonSix = document.createElement('button')
+    buttonSix.classList.add('button')
+    buttonSix.classList.add('is-link')
+    buttonSix.onclick = function(){handleFormClick()}
+    buttonSix.textContent = "Submit"
+
+    form.appendChild(fieldSix)
+    fieldSix.appendChild(controlSix)
+    controlSix.appendChild(buttonSix)
+    button.classList.remove('inactive')
+    button.classList.add('active')
+    }else{
+        container.replaceChildren();
+        button.textContent = "Add Game"
+        button.classList.remove('active')
+        button.classList.add('inactive')
+    }
+}
+
+function handleFormClick() {
     let group = document.querySelector('.group').value.toUpperCase();
     let team1 = document.querySelector('.team1').value.toUpperCase();
     let team2 = document.querySelector('.team2').value.toUpperCase();
@@ -102,6 +264,17 @@ function IDFromName(teamName, group){
     return id;
 }
 
+function makeGame(day, ID, win, gameCounter){
+    let game = {
+        'day': day,
+        'opp': ID,
+        'win': win,
+        'type': 'normal',
+        'id': gameCounter
+    }
+    return game;
+}
+
 function determineGame(team1, team2, day, group, teams, win, groupLetter) {
     let ID1 = IDFromName(team1, group)
     let ID2 = IDFromName(team2, group)
@@ -127,94 +300,35 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
     let gameCounter = localStorage.getItem('gameCounter')
     gameCounter++;
     localStorage.setItem('gameCounter', gameCounter)
-    let game1 = {
-        'day': day,
-        'opp': ID2,
-        'win': win1,
-        'type': 'normal',
-        'id': gameCounter
-    }
-    let game2 = {
-        'day': day,
-        'opp': ID1,
-        'win': win2,
-        'type': 'normal',
-        'id': gameCounter
-    }
+    let game1 = makeGame(day, ID2, win1, gameCounter)
+    let game2 = makeGame(day, ID1, win2, gameCounter)
 
-    group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
+    group = group.sort((teamA, teamB) => {
+        return (teamA.id < teamB.id) ? -1 : 1
+    });
 
     for (let i = 0; i < group.length; i++) {
         if (team1 === group[i].name.toUpperCase()) {
             group[i].games.unshift(game1)
             teams[i+num].games.unshift(game1)
-            if (win1) {
-                group[i].W++;
-                teams[i+num].W++;
-                if (group[i].streakValue > 0 && teams[i+num].streakValue >0) {
-                    group[i].streakValue++;
-                    group[i].streak = group[i].streakValue + "W"
-                    teams[i+num].streakValue++;
-                    teams[i+num].streak = teams[i+num].streakValue + "W"
-                } else {
-                    group[i].streakValue = 1;
-                    group[i].streak = group[i].streakValue + "W"
-                    teams[i+num].streakValue = 1;
-                    teams[i+num].streak = teams[i+num].streakValue + "W"
-                }
-            } else {
-                group[i].L++
-                teams[i+num].L++
-                if (group[i].streakValue > 0 && teams[i+num].streakValue >0) {
-                    group[i].streakValue = -1;
-                    group[i].streak = Math.abs(group[i].streakValue) + "L"
-                    teams[i+num].streakValue = -1;
-                    teams[i+num].streak = Math.abs(teams[i+num].streakValue) + "L"
-                } else {
-                    group[i].streakValue--;
-                    group[i].streak = Math.abs(group[i].streakValue) + "L"
-                    teams[i+num].streakValue --;
-                    teams[i+num].streak = Math.abs(teams[i+num].streakValue) + "L"
-                }
-            }
+            let result = changeStreak(group[i], teams[i+num], win1)
+            group[i] = result[0];
+            teams[i+num] = result[1]
         } else if (team2 === group[i].name.toUpperCase()) {
             group[i].games.unshift(game2)
             teams[i+num].games.unshift(game2)
-            if (win2) {
-                group[i].W++;
-                teams[i+num].W++;
-                if (group[i].streakValue > 0 && teams[i+num].streakValue >0) {
-                    group[i].streakValue++;
-                    group[i].streak = group[i].streakValue + "W"
-                    teams[i+num].streakValue++;
-                    teams[i+num].streak = teams[i+num].streakValue + "W"
-                } else {
-                    group[i].streakValue = 1;
-                    group[i].streak = group[i].streakValue + "W"
-                    teams[i+num].streakValue = 1;
-                    teams[i+num].streak = teams[i+num].streakValue + "W"
-                }
-            } else {
-                group[i].L++
-                teams[i+num].L++;
-                if (group[i].streakValue > 0 && teams[i+num].streakValue >0) {
-                    group[i].streakValue = -1;
-                    group[i].streak = Math.abs(group[i].streakValue) + "L"
-                    teams[i+num].streakValue = -1;
-                    teams[i+num].streak = Math.abs(teams[i+num].streakValue) + "L"
-                } else {
-                    group[i].streakValue--;
-                    group[i].streak = Math.abs(group[i].streakValue) + "L"
-                    teams[i+num].streakValue --;
-                    teams[i+num].streak = Math.abs(teams[i+num].streakValue) + "L"
-                }
-            }
+            let result = changeStreak(group[i], teams[i+num], win2)
+            group[i] = result[0];
+            teams[i+num] = result[1]
         }
     }
-    group = sortGroupWins(group, team1, team2);
+    group = sortGroupByWins(group);
     group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
 
     createTable(group, groupLetter)
+    group = group.sort((teamA, teamB) => {
+        return (teamA.id < teamB.id) ? -1 : 1
+    });
     if (groupLetter === "A") {
         localStorage.setItem('groupA', JSON.stringify(group))
     } else if (groupLetter === "B") {
@@ -228,8 +342,44 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
 
 }
 
+function changeStreak(currGroup, team, win, index, num){
+    let group = currGroup;
+    let teams = team;
+    let i = index;
+    if(win){
+        group.W++;
+        teams.W++;
+        if (group.streakValue > 0 && teams.streakValue >0) {
+            group.streakValue++;
+            group.streak = group.streakValue + "W"
+            teams.streakValue++;
+            teams.streak = teams.streakValue + "W"
+        } else {
+            group.streakValue = 1;
+            group.streak = group.streakValue + "W"
+            teams.streakValue = 1;
+            teams.streak = teams.streakValue + "W"
+        }
+    }else{
+        group.L++;
+        teams.L++;
+        if (group.streakValue > 0 && teams.streakValue >0) {
+            group.streakValue = -1;
+            group.streak = Math.abs(group.streakValue) + "L"
+            teams.streakValue = -1;
+            teams.streak = Math.abs(teams.streakValue) + "L"
+        } else {
+            group.streakValue--;
+            group.streak = Math.abs(group.streakValue) + "L"
+            teams.streakValue --;
+            teams.streak = Math.abs(teams.streakValue) + "L"
+        }
+    }
+    return [group, teams]
+}
 
-function sortGroupWins(group, team1, team2) {
+
+function sortGroupByWins(group) {
     group = group.sort((teamA, teamB) => teamB.W - teamA.W)
     for (let i = 0; i < group.length; i++) {
         group[i].pos = i + 1;
@@ -263,7 +413,6 @@ function getGroups(teamData) {
     })
 }
 
-
 createTable(groupA, 'A');
 createTable(groupB, 'B')
 createTable(groupC, 'C')
@@ -284,14 +433,29 @@ function createTable(group, groupNum) {
     tableBody.replaceChildren();
     group.forEach((team) => {
         const row = document.createElement('tr');
+        row.classList.add('rows')
         let td = document.createElement('td');
         td.textContent = team.pos;
         row.appendChild(td);
+        td = document.createElement('td')
+        let img = document.createElement('img')
+        img.src = team.logo
+        img.classList.add('table-logo')
+        td.appendChild(img)
+        row.appendChild(td)
         td = document.createElement('td');
+        td.classList.add('active')
         let link = document.createElement('a');
         link.href = 'matches.html?id=' + team.id;
         link.textContent = team.name;
         td.appendChild(link);
+        row.appendChild(td)
+        td = document.createElement('td')
+        td.classList.add('hidden')
+        let link1 = document.createElement('a')
+        link1.href = 'matches.html?id=' + team.id
+        link1.textContent = team.shortname
+        td.appendChild(link1)
         row.appendChild(td)
         td = document.createElement('td');
         td.textContent = team.W;
@@ -300,169 +464,83 @@ function createTable(group, groupNum) {
         td.textContent = team.L;
         row.appendChild(td)
         td = document.createElement('td');
+        td.classList.add('pct')
         td.textContent = (team.W / (team.W + team.L) * 100).toFixed(2) + "%"
         row.appendChild(td)
         td = document.createElement('td')
         td.textContent = team.streak;
+        td.classList.add('streak')
         row.appendChild(td)
         tableBody.appendChild(row);
     })
 }
 
-function sort(field, groupNum) {
-    if (groupNum == 'A') {
-        let tableBody = document.querySelector('#groupA tbody')
-        if (descendingA) {
-            if (field == "pos") {
-                groupA = groupA.sort((teamA, teamB) => teamB.pos - teamA.pos)
-            } else if (field == 'Name') {
-                groupA = groupA.sort((teamA, teamB) => {
-                    return (teamA.name < teamB.name) ? -1 : 1
-                });
-            } else if (field == 'W') {
-                groupA = groupA.sort((teamA, teamB) => teamA.W - teamB.W)
-            } else if (field == 'L') {
-                groupA = groupA.sort((teamA, teamB) => teamA.L - teamB.L)
-            } else if (field == 'pct') {
-                groupA = groupA.sort((teamA, teamB) => (teamA.W / (teamA.W + teamA.L) * 100) - (teamB.W / (teamB.W + teamB.L) * 100))
-            } else if (field == 'streak') {
-                groupA = groupA.sort((teamA, teamB) => teamB.streakValue - teamA.streakValue)
-            }
-            descendingA = false;
-        } else {
-            if (field == "pos") {
-                groupA = groupA.sort((teamA, teamB) => teamA.pos - teamB.pos)
-            } else if (field == 'Name') {
-                groupA = groupA.sort((teamA, teamB) => {
-                    return (teamB.name < teamA.name) ? -1 : 1
-                });
-            } else if (field == 'W') {
-                groupA = groupA.sort((teamA, teamB) => teamB.W - teamA.W)
-            } else if (field == 'L') {
-                groupA = groupA.sort((teamA, teamB) => teamB.L - teamA.L)
-            } else if (field == 'pct') {
-                groupA = groupA.sort((teamA, teamB) => (teamB.W / (teamB.W + teamB.L) * 100) - (teamA.W / (teamA.W + teamA.L) * 100))
-            } else if (field == 'streak') {
-                groupA = groupA.sort((teamA, teamB) => teamA.streakValue - teamB.streakValue)
-            }
-            descendingA = true;
-        }
-        createTable(groupA, groupNum)
-    } else if (groupNum == 'B') {
-        let tableBody = document.querySelector('#groupB tbody')
-        if (descendingB) {
-            if (field == "pos") {
-                groupB = groupB.sort((teamA, teamB) => teamB.pos - teamA.pos)
-            } else if (field == 'Name') {
-                groupB = groupB.sort((teamA, teamB) => {
-                    return (teamA.name < teamB.name) ? -1 : 1
-                });
-            } else if (field == 'W') {
-                groupB = groupB.sort((teamA, teamB) => teamA.W - teamB.W)
-            } else if (field == 'L') {
-                groupB = groupB.sort((teamA, teamB) => teamA.L - teamB.L)
-            } else if (field == 'pct') {
-                groupB = groupB.sort((teamA, teamB) => (teamA.W / (teamA.W + teamA.L) * 100) - (teamB.W / (teamB.W + teamB.L) * 100))
-            } else if (field == 'streak') {
-                groupB = groupB.sort((teamA, teamB) => teamB.streakValue - teamA.streakValue)
-            }
-            descendingB = false;
-        } else {
-            if (field == "pos") {
-                groupB = groupB.sort((teamA, teamB) => teamA.pos - teamB.pos)
-            } else if (field == 'Name') {
-                groupB = groupB.sort((teamA, teamB) => {
-                    return (teamB.name < teamA.name) ? -1 : 1
-                });
-            } else if (field == 'W') {
-                groupB = groupB.sort((teamA, teamB) => teamB.W - teamA.W)
-            } else if (field == 'L') {
-                groupB = groupB.sort((teamA, teamB) => teamB.L - teamA.L)
-            } else if (field == 'pct') {
-                groupB = groupB.sort((teamA, teamB) => (teamB.W / (teamB.W + teamB.L) * 100) - (teamA.W / (teamA.W + teamA.L) * 100))
-            } else if (field == 'streak') {
-                groupB = groupB.sort((teamA, teamB) => teamA.streakValue - teamB.streakValue)
-            }
-            descendingB = true;
-        }
-        createTable(groupB, groupNum)
-    } else if (groupNum == 'C') {
-        let tableBody = document.querySelector('#groupC tbody')
-        if (descendingC) {
-            if (field == "pos") {
-                groupC = groupC.sort((teamA, teamB) => teamB.pos - teamA.pos)
-            } else if (field == 'Name') {
-                groupC = groupC.sort((teamA, teamB) => {
-                    return (teamA.name < teamB.name) ? -1 : 1
-                });
-            } else if (field == 'W') {
-                groupC = groupC.sort((teamA, teamB) => teamA.W - teamB.W)
-            } else if (field == 'L') {
-                groupC = groupC.sort((teamA, teamB) => teamA.L - teamB.L)
-            } else if (field == 'pct') {
-                groupC = groupC.sort((teamA, teamB) => (teamA.W / (teamA.W + teamA.L) * 100) - (teamB.W / (teamB.W + teamB.L) * 100))
-            } else if (field == 'streak') {
-                groupC = groupC.sort((teamA, teamB) => teamB.streakValue - teamA.streakValue)
-            }
-            descendingC = false;
-        } else {
-            if (field == "pos") {
-                groupC = groupC.sort((teamA, teamB) => teamA.pos - teamB.pos)
-            } else if (field == 'Name') {
-                groupC = groupC.sort((teamA, teamB) => {
-                    return (teamB.name < teamA.name) ? -1 : 1
-                });
-            } else if (field == 'W') {
-                groupC = groupC.sort((teamA, teamB) => teamB.W - teamA.W)
-            } else if (field == 'L') {
-                groupC = groupC.sort((teamA, teamB) => teamB.L - teamA.L)
-            } else if (field == 'pct') {
-                groupC = groupC.sort((teamA, teamB) => (teamB.W / (teamB.W + teamB.L) * 100) - (teamA.W / (teamA.W + teamA.L) * 100))
-            } else if (field == 'streak') {
-                groupC = groupC.sort((teamA, teamB) => teamA.streakValue - teamB.streakValue)
-            }
-            descendingC = true;
-        }
-        createTable(groupC, groupNum)
-    } else if (groupNum == 'D') {
-        let tableBody = document.querySelector('#groupD tbody')
-        if (descendingD) {
-            if (field == "pos") {
-                groupD = groupD.sort((teamA, teamB) => teamB.pos - teamA.pos)
-            } else if (field == 'Name') {
-                groupD = groupD.sort((teamA, teamB) => {
-                    return (teamA.name < teamB.name) ? -1 : 1
-                });
-            } else if (field == 'W') {
-                groupD = groupD.sort((teamA, teamB) => teamA.W - teamB.W)
-            } else if (field == 'L') {
-                groupD = groupD.sort((teamA, teamB) => teamA.L - teamB.L)
-            } else if (field == 'pct') {
-                groupD = groupD.sort((teamA, teamB) => (teamA.W / (teamA.W + teamA.L) * 100) - (teamB.W / (teamB.W + teamB.L) * 100))
-            } else if (field == 'streak') {
-                groupD = groupD.sort((teamA, teamB) => teamB.streakValue - teamA.streakValue)
-            }
-            descendingD = false;
-        } else {
-            if (field == "pos") {
-                groupD = groupD.sort((teamA, teamB) => teamA.pos - teamB.pos)
-            } else if (field == 'Name') {
-                groupD = groupD.sort((teamA, teamB) => {
-                    return (teamB.name < teamA.name) ? -1 : 1
-                });
-            } else if (field == 'W') {
-                groupD = groupD.sort((teamA, teamB) => teamB.W - teamA.W)
-            } else if (field == 'L') {
-                groupD = groupD.sort((teamA, teamB) => teamB.L - teamA.L)
-            } else if (field == 'pct') {
-                groupD = groupD.sort((teamA, teamB) => (teamB.W / (teamB.W + teamB.L) * 100) - (teamA.W / (teamA.W + teamA.L) * 100))
-            } else if (field == 'streak') {
-                groupD = groupD.sort((teamA, teamB) => teamA.streakValue - teamB.streakValue)
-            }
-            descendingD = true;
-        }
-        createTable(groupD, groupNum)
+function sort(field, groupNum){
+    let tableBody;
+    let descending;
+    let group;
+    if(groupNum == 'A'){
+        tableBody = document.querySelector('#groupA tbody')
+        descending = descendingA;
+        group = groupA;
+    }else if(groupNum == 'B'){
+        tableBody = document.querySelector('#groupB tbody')
+        descending = descendingB;
+        group = groupB;
+    }else if(groupNum == 'C'){
+        tableBody = document.querySelector('#groupC tbody') 
+        descending = descendingC;
+        group = groupC;
+    }else if(groupNum == 'D'){
+        tableBody = document.querySelector('#groupD tbody')
+        descending = descendingD;
+        group = groupD;
     }
+    if (descending) {
+        if (field == "pos") {
+            group = group.sort((teamA, teamB) => teamB.pos - teamA.pos)
+        } else if (field == 'Name') {
+            group = group.sort((teamA, teamB) => {
+                return (teamA.name < teamB.name) ? -1 : 1
+            });
+        } else if (field == 'W') {
+            group = group.sort((teamA, teamB) => teamA.W - teamB.W)
+        } else if (field == 'L') {
+            group = group.sort((teamA, teamB) => teamA.L - teamB.L)
+        } else if (field == 'pct') {
+            group = group.sort((teamA, teamB) => (teamA.W / (teamA.W + teamA.L) * 100) - (teamB.W / (teamB.W + teamB.L) * 100))
+        } else if (field == 'streak') {
+            group = group.sort((teamA, teamB) => teamB.streakValue - teamA.streakValue)
+        }
+        descending = false;
+    } else {
+        if (field == "pos") {
+            group = group.sort((teamA, teamB) => teamA.pos - teamB.pos)
+        } else if (field == 'Name') {
+            group = group.sort((teamA, teamB) => {
+                return (teamB.name < teamA.name) ? -1 : 1
+            });
+        } else if (field == 'W') {
+            group = group.sort((teamA, teamB) => teamB.W - teamA.W)
+        } else if (field == 'L') {
+            group = group.sort((teamA, teamB) => teamB.L - teamA.L)
+        } else if (field == 'pct') {
+            group = group.sort((teamA, teamB) => (teamB.W / (teamB.W + teamB.L) * 100) - (teamA.W / (teamA.W + teamA.L) * 100))
+        } else if (field == 'streak') {
+            group = group.sort((teamA, teamB) => teamA.streakValue - teamB.streakValue)
+        }
+        descending = true;
+    }
+    if(groupNum == 'A'){
+        descendingA = descending
+    }else if(groupNum == 'B'){
+        descendingB = descending
+    }else if(groupNum == 'C'){
+        descendingC = descending
+    }else if(groupNum == 'D'){
+        descendingD = descending
+    }
+    createTable(group, groupNum)
 }
 
 let teams = [];
@@ -470,11 +548,13 @@ let team = {};
 
 team['pos'] = 1
 team['name'] = "T1";
+team['shortname'] = "T1"
 team['id'] = 'GAT1';
 team['W'] = 5;
 team['L'] = 1;
 team['streak'] = '3W'
 team['streakValue'] = 3
+team['logo'] = './images/t1.png';
 team['games'] = [
     {
         'day': 5,
@@ -523,11 +603,13 @@ teams.push(team);
 team = {};
 team['pos'] = 2
 team['name'] = "Edward Gaming";
+team['shortname'] = "EDG"
 team['id'] = 'GAT2';
 team['W'] = 4;
 team['L'] = 2;
 team['streak'] = '1L'
 team['streakValue'] = -1
+team['logo'] = './images/edg.png';
 team['games'] = [
     {
         'day': 5,
@@ -577,11 +659,13 @@ teams.push(team);
 team = {};
 team['pos'] = 3
 team['name'] = "Fnatic";
+team['shortname'] = "FNC"
 team['id'] = 'GAT3';
 team['W'] = 2;
 team['L'] = 4;
 team['streak'] = '4L';
 team['streakValue'] = -4
+team['logo'] = './images/fnc.png';
 team['games'] = [
     {
         'day': 5,
@@ -631,11 +715,13 @@ teams.push(team);
 team = {};
 team['pos'] = 4
 team['name'] = "Cloud 9";
+team['shortname'] = "C9"
 team['id'] = 'GAT4';
 team['W'] = 1;
 team['L'] = 5;
 team['streak'] = '2L'
 team['streakValue'] = -2
+team['logo'] = './images/c9.png';
 team['games'] = [
     {
         'day': 5,
@@ -685,11 +771,13 @@ teams.push(team);
 team = {};
 team['pos'] = 1
 team['name'] = "JD Gaming";
+team['shortname'] = "JDG"
 team['id'] = 'GBT1';
 team['W'] = 6;
 team['L'] = 1;
 team['streak'] = '1W'
 team['streakValue'] = 1
+team['logo'] = './images/jdg.png';
 team['games'] = [
     {
         'day': 6,
@@ -746,11 +834,13 @@ teams.push(team);
 team = {};
 team['pos'] = 2
 team['name'] = "DWG KIA";
+team['shortname'] = "DWG"
 team['id'] = 'GBT2';
 team['W'] = 5;
 team['L'] = 2;
 team['streak'] = '1L'
 team['streakValue'] = -1
+team['logo'] = './images/dwg.png';
 team['games'] = [
     {
         'day': 6,
@@ -807,11 +897,13 @@ teams.push(team);
 team = {};
 team['pos'] = 3
 team['name'] = "Evil Geniuses";
+team['shortname'] = "EG"
 team['id'] = 'GBT3';
 team['W'] = 1;
 team['L'] = 5;
 team['streak'] = '2L'
 team['streakValue'] = -2
+team['logo'] = './images/eg.png';
 team['games'] = [
     {
         'day': 6,
@@ -861,11 +953,13 @@ teams.push(team);
 team = {};
 team['pos'] = 4
 team['name'] = "G2 Esports";
+team['shortname'] = "G2"
 team['id'] = 'GBT4';
 team['W'] = 1;
 team['L'] = 5;
 team['streak'] = '4L'
 team['streakValue'] = -4
+team['logo'] = './images/g2.png';
 team['games'] = [
     {
         'day': 6,
@@ -915,11 +1009,13 @@ teams.push(team);
 team = {};
 team['pos'] = 1
 team['name'] = "DRX";
+team['shortname'] = "DRX"
 team['id'] = 'GCT1';
 team['W'] = 5;
 team['L'] = 2;
 team['streak'] = '1W'
 team['streakValue'] = 1
+team['logo'] = './images/drx.png';
 team['games'] = [
     {
         'day': 7,
@@ -976,11 +1072,13 @@ teams.push(team);
 team = {};
 team['pos'] = 2
 team['name'] = "Rogue";
+team['shortname'] = "RGE"
 team['id'] = 'GCT2';
 team['W'] = 4;
 team['L'] = 3;
 team['streak'] = '3L'
 team['streakValue'] = -3
+team['logo'] = './images/rge.png';
 team['games'] = [
     {
         'day': 7,
@@ -1037,11 +1135,13 @@ teams.push(team);
 team = {};
 team['pos'] = 3
 team['name'] = "Top Esports";
+team['shortname'] = "TOP"
 team['id'] = 'GCT3';
 team['W'] = 3;
 team['L'] = 3;
 team['streak'] = '2W'
 team['streakValue'] = 2
+team['logo'] = './images/top.png';
 team['games'] = [
     {
         'day': 7,
@@ -1091,11 +1191,13 @@ teams.push(team);
 team = {};
 team['pos'] = 4
 team['name'] = "GAM Esports";
+team['shortname'] = "GAM"
 team['id'] = 'GCT4';
 team['W'] = 1;
 team['L'] = 5;
 team['streak'] = '1L'
 team['streakValue'] = -1
+team['logo'] = './images/gam.png';
 team['games'] = [
     {
         'day': 7,
@@ -1145,11 +1247,13 @@ teams.push(team);
 team = {};
 team['pos'] = 1
 team['name'] = "Gen. G";
+team['shortname'] = "GG"
 team['id'] = 'GDT1';
 team['W'] = 6;
 team['L'] = 1;
 team['streak'] = '6W'
 team['streakValue'] = 6
+team['logo'] = './images/geng.png';
 team['games'] = [
     {
         'day': 8,
@@ -1206,11 +1310,13 @@ teams.push(team);
 team = {};
 team['pos'] = 2
 team['name'] = "Royal Never Give Up";
+team['shortname'] = "RNG"
 team['id'] = 'GDT2';
 team['W'] = 5;
 team['L'] = 2;
 team['streak'] = '2L'
 team['streakValue'] = -2
+team['logo'] = './images/rng.png';
 team['games'] = [
     {
         'day': 8,
@@ -1267,11 +1373,13 @@ teams.push(team);
 team = {};
 team['pos'] = 3
 team['name'] = "CTBC Flying Oyster";
+team['shortname'] = "CTBC"
 team['id'] = 'GDT3';
 team['W'] = 1;
 team['L'] = 5;
 team['streak'] = '5L'
 team['streakValue'] = -5
+team['logo'] = './images/ctbc.png';
 team['games'] = [
     {
         'day': 8,
@@ -1321,11 +1429,13 @@ teams.push(team);
 team = {};
 team['pos'] = 4
 team['name'] = "100 Thieves";
+team['shortname'] = "100T"
 team['id'] = 'GDT4';
 team['W'] = 1;
 team['L'] = 5;
 team['streak'] = '2L'
 team['streakValue'] = -2
+team['logo'] = './images/100t.png';
 team['games'] = [
     {
         'day': 8,

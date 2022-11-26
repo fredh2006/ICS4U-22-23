@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class = "black">
+<body class="black">
     <nav class="navbar">
         <div class="container">
             <ul class="nav">
@@ -23,75 +23,37 @@
                 <li>
                     <a href="games.html">Games</a>
                 </li>
+
             </ul>
         </div>
     </nav>
-    <section class="container">
-        <div class="form">
-            <div class="field">
-                <label class="label">Group</label>
-                <div class="control">
-                    <input class="input group" type="text" placeholder="A, B, C, D" required>
-                </div>
-            </div>
 
-            <div class="field">
-                <label class="label">Team 1</label>
-                <div class="control">
-                    <input class="input team1" type="text" placeholder="Pick a team from chosen group" required>
-                </div>
-            </div>
 
-            <div class="field">
-                <label class="label">Team 2</label>
-                <div class="control">
-                    <input class="input team2" type="text" placeholder="Pick another team from chosen group" required>
-                </div>
-            </div>
+    <section class="container container-button" >
+               <button class="button inactive">Add Game</button>
+                    <div class="for-form">
 
-            <div class="field">
-                <label class="label">Day</label>
-                <div class="control">
-                    <input class="input day" type="text" placeholder="Pick a day between 1 - 8" required>
-                </div>
             </div>
-
-            <div class="field">
-                <label class="label ">Winner</label>
-                <div class="control">
-                    <div class="select">
-                        <select class="select-options">
-                            <option>Team 1</option>
-                            <option>Team 2</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-link" onClick="return handleClick()">Submit</button>
-                </div>
-            </div>
-        </div>
     </section>
-    <section class="container">
+    <section class="container container-table">
         <div class="columns mt-5">
-            <div class="column is-half">
+            <div class="column is-half is-centered">
                 <div class="card">
                     <header class="card-header-title">
                         Group A
                     </header>
                     <div class="card-content">
-                        <table id="groupA" class="table is-striped">
+                        <table id="groupA" class="table">
                             <thead>
-                                <tr>
+                                <tr class="rows">
                                     <th onclick="sort('pos', 'A')">Pos</th>
-                                    <th onclick="sort('Name', 'A')" class="name">Name</th>
+                                    <th>Logo</th>
+                                    <th onclick = "sort('Name', 'A')" class = "name">Name</th>
+                                    <th onclick = "sort('Name', 'A')" class = "hidden">Name</th>
                                     <th onclick="sort('W', 'A')">Wins</th>
                                     <th onclick="sort('L', 'A')">Losses</th>
-                                    <th onclick="sort('pct', 'A')">PCT</th>
-                                    <th onclick="sort('streak', 'A')">Streak</th>
+                                    <th onclick="sort('pct', 'A')" class = "pct">PCT</th>
+                                    <th onclick="sort('streak', 'A')" class = "streak">Streak</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,14 +68,17 @@
                         Group B
                     </header>
                     <div class="card-content">
-                        <table id="groupB" class="table is-striped">
+                        <table id="groupB" class="table">
                             <thead>
-                                <th onclick="sort('pos', 'B')">Pos</th>
-                                <th onclick="sort('Name', 'B')" class="name">Name</th>
-                                <th onclick="sort('W', 'B')">Wins</th>
-                                <th onclick="sort('L', 'B')">Losses</th>
-                                <th onclick="sort('pct', 'B')">PCT</th>
-                                <th onclick="sort('streak', 'B')">Streak</th>
+                                <tr class="rows">
+                                    <th onclick="sort('pos', 'B')">Pos</th>
+                                    <th>Logo</th>
+                                    <th onclick="sort('Name', 'B')" class="name">Name</th>
+                                    <th onclick = "sort('Name', 'A')" class = "hidden">Name</th>
+                                    <th onclick="sort('W', 'B')">Wins</th>
+                                    <th onclick="sort('L', 'B')">Losses</th>
+                                    <th onclick="sort('pct', 'B')" class = "pct">PCT</th>
+                                    <th onclick="sort('streak', 'B')" class = "streak">Streak</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,21 +89,23 @@
             </div>
         </div>
         <div class="columns mt-5">
-            <div class="column is-half">
+            <div class="column is-half is-centered">
                 <div class="card">
                     <header class="card-header-title">
                         Group C
                     </header>
                     <div class="card-content">
-                        <table id="groupC" class="table is-striped">
+                        <table id="groupC" class="table">
                             <thead>
-                                <tr>
+                                <tr class="rows">
                                     <th onclick="sort('pos', 'C')">Pos</th>
+                                    <th>Logo</th>
                                     <th onclick="sort('Name', 'C')" class="name">Name</th>
+                                    <th onclick = "sort('Name', 'A')" class = "hidden">Name</th>
                                     <th onclick="sort('W', 'C')">Wins</th>
                                     <th onclick="sort('L', 'C')">Losses</th>
-                                    <th onclick="sort('pct', 'C')">PCT</th>
-                                    <th onclick="sort('streak', 'C')">Streak</th>
+                                    <th onclick="sort('pct', 'C')" class = "pct">PCT</th>
+                                    <th onclick="sort('streak', 'C')" class = "streak">Streak</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -147,21 +114,23 @@
                     </div>
                 </div>
             </div>
-            <div class="column is-half">
+            <div class="column is-half is-mobile">
                 <div class="card">
                     <header class="card-header-title">
                         Group D
                     </header>
                     <div class="card-content">
-                        <table id="groupD" class="table is-striped">
+                        <table id="groupD" class="table">
                             <thead>
-                                <tr>
+                                <tr class="rows">
                                     <th onclick="sort('pos', 'D')">Pos</th>
+                                    <th>Logo</th>
                                     <th onclick="sort('Name', 'D')" class="name">Name</th>
+                                    <th onclick = "sort('Name', 'A')" class = "hidden">Name</th>
                                     <th onclick="sort('W', 'D')">Wins</th>
                                     <th onclick="sort('L', 'D')">Losses</th>
-                                    <th onclick="sort('pct', 'D')">PCT</th>
-                                    <th onclick="sort('streak', 'D')">Streak</th>
+                                    <th onclick="sort('pct', 'D')" class = "pct">PCT</th>
+                                    <th onclick="sort('streak', 'D')" class = "streak">Streak</th>
                                 </tr>
                             </thead>
                             <tbody>

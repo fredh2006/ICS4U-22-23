@@ -28,7 +28,8 @@ function createSchedule() {
         }
     })
     let pageTitle = document.createElement('div')
-    pageTitle.textContent = currentPage;
+    pageTitle.textContent = "Day: " + currentPage;
+    pageTitle.classList.add('white')
     section.replaceChildren(pageTitle)
     displayGames(currentPage)
 }
@@ -45,7 +46,6 @@ function displayGames(day) {
     teams.forEach(team => {
         team.games.forEach(game => {
             if (game.day == day) {
-                console.log(game);
                 if (counter % 4 == 0) {
                     column = document.createElement('div')
                     column.setAttribute('class', 'columns')
@@ -62,15 +62,24 @@ function displayGames(day) {
                     let cardHeader = document.createElement('div')
                     cardHeader.setAttribute('class', 'card-header-title')
                     let cardTitle = "Day: " + game.day.toString();
-                    if (game.type === "tiebreaker") {
-                        cardTitle += " - " + "Tiebreaker"
-                        console.log(cardTitle);
-                    }
                     cardHeader.textContent = cardTitle;
                     let cardContent = document.createElement('div')
                     cardContent.setAttribute('class', 'card-content')
                     let oppArr = teams.filter(team => team.id == game.opp)
                     cardContent.textContent = team.name + " v.s " + oppArr[0].name
+                    cardContent.classList.add('active')
+                    let cardContentSmall = document.createElement('div')
+                    cardContentSmall.setAttribute('class', 'card-content')
+                    cardContentSmall.textContent = team.shortname + " v.s " + oppArr[0].shortname
+                    cardContentSmall.classList.add('hidden')
+                    let img = document.createElement('img')
+                    img.src = team.logo
+                    img.classList.add('card-content')
+                    img.classList.add('games-logo')
+                    let img1 = document.createElement('img')
+                    img1.src = oppArr[0].logo
+                    img1.classList.add('card-content')
+                    img1.classList.add('games-logo')
                     let score = document.createElement('div')
                     score.setAttribute('class', 'card-content')
                     if (game.win) {
@@ -83,6 +92,9 @@ function displayGames(day) {
                     columns.appendChild(card)
                     card.appendChild(cardHeader)
                     card.appendChild(cardContent)
+                    card.appendChild(cardContentSmall)
+                    card.appendChild(img)
+                    card.appendChild(img1)
                     card.appendChild(score)
                     counter++;
                 }
@@ -95,7 +107,15 @@ function displayGames(day) {
 
 function createPagination(){
     const pageCount = Math.ceil(totalGames.length/paginationLimit)
-    console.log(pageCount);
+    let li = document.createElement('li')
+    li.classList.add('small2')
+    let a = document.createElement('a')
+    a.textContent = "<<"
+    a.classList.add('pagination-link')
+    a.classList.add('small')
+    a.classList.add('fb')
+    paginationNumbers.appendChild(li)
+    li.appendChild(a)
     for(let i = 0; i<pageCount; i++){
         let li = document.createElement('li')
         li.classList.add('small2')
@@ -107,12 +127,38 @@ function createPagination(){
         paginationNumbers.appendChild(li)
         li.appendChild(a)
     }
+    let liTwo = document.createElement('i')
+    liTwo.classList.add('small2')
+    let aTwo = document.createElement('a')
+    aTwo.textContent = ">>"
+    aTwo.classList.add('pagination-link')
+    aTwo.classList.add('small')
+    aTwo.classList.add('fb')
+    paginationNumbers.appendChild(liTwo)
+    liTwo.appendChild(aTwo)
     setCurrentPage(1)
     document.querySelectorAll('.small').forEach((link)=>{
         let page = Number(link.textContent)
-        if(page){
-            console.log(page);
-            link.addEventListener("click",()=>{
+        if (link.classList.contains('fb')) {
+            link.addEventListener("click", () => {
+                if (link.textContent === ">>") {
+                    let page = currentPage + 1;
+                    if (page > biggestPage[biggestPage.length - 1]) {
+                        setCurrentPage(currentPage)
+                    } else {
+                        setCurrentPage(currentPage + 1)
+                    }
+                } else {
+                    if (currentPage - 1 <= 0) {
+                        setCurrentPage(currentPage)
+                    } else {
+                        setCurrentPage(currentPage - 1)
+                    }
+                }
+            })
+        }
+        if (page) {
+            link.addEventListener("click", () => {
                 setCurrentPage(page)
             })
         }
@@ -127,9 +173,7 @@ function deleteSmallPagination(){
 }
 
 function setCurrentPage(pageNum){
-    console.log(pageNum);
     currentPage = pageNum;
-    console.log(currentPage);
     handleActivePageNumber();
     const prevRange = (pageNum - 1) * paginationLimit;
     const currRange = pageNum * paginationLimit;
@@ -148,7 +192,6 @@ window.addEventListener('load',()=>{
     document.querySelectorAll('.small').forEach((link)=>{
         let page = Number(link.textContent)
         if(page){
-            console.log(page);
             link.addEventListener("click",()=>{
                 setCurrentPage(page)
             })
@@ -157,7 +200,6 @@ window.addEventListener('load',()=>{
 })
 
 const handleActivePageNumber = () => {
-    console.log(currentPage);
     document.querySelectorAll(".small").forEach((link) => {
       link.classList.remove("is-current");
        
@@ -168,82 +210,3 @@ const handleActivePageNumber = () => {
     });
   };
   
-
-/*
-function displayGames() {
-    let counter = 0;
-    let container = document.querySelector('#container');
-    let column;
-    teams.forEach(team => {
-        console.log(team);
-        team.games.forEach(game => {
-            if (dayArr.includes(game.day)) {
-
-            } else {
-                dayArr.push(game.day)
-            }
-        })
-    })
-    console.log(dayArr);
-    dayArr = dayArr.sort((a, b) => b - a);
-    console.log(dayArr);
-    dayArr.forEach(num => {
-        let section = document.createElement('section')
-        section.textContent = "Day: " + num;
-        container.appendChild(section)
-        section.setAttribute('id', num)
-        section.setAttribute('class', 'daySections')
-    })
-    let allSections = document.querySelectorAll('.daySections')
-    allSections.forEach(section => {
-        counter = 0;
-        let gameArr = [];
-        teams.forEach(team => {
-            team.games.forEach(game => {
-                if (counter % 4 == 0) {
-                    column = document.createElement('div')
-                    column.setAttribute('class', 'columns')
-                }
-                if(gameArr.includes(game.id)){
-                    console.log('hello');
-                }else{
-                    gameArr.push(game.id)
-                let columns = document.createElement('div')
-                columns.setAttribute('class', 'column is-one-quarter')
-                if (game.day == section.getAttribute('id')) {
-                    let card = document.createElement('div')
-                    card.setAttribute('class', 'card')
-                    let cardHeader = document.createElement('div')
-                    cardHeader.setAttribute('class', 'card-header-title')
-                    let cardTitle = "Day: " + game.day.toString();
-                    if (game.type === "tiebreaker") {
-                        cardTitle += " - " + "Tiebreaker"
-                        console.log(cardTitle);
-                    }
-                    cardHeader.textContent = cardTitle;
-                    let cardContent = document.createElement('div')
-                    cardContent.setAttribute('class', 'card-content')
-                    let oppArr = teams.filter(team => team.id == game.opp)
-                    cardContent.textContent = team.name + " v.s " + oppArr[0].name
-                    let score = document.createElement('div')
-                    score.setAttribute('class', 'card-content')
-                    if (game.win) {
-                        score.textContent = "Score: 1 - 0"
-                    } else {
-                        score.textContent = "Score: 0 - 1"
-                    }
-                    section.appendChild(column)
-                    column.appendChild(columns)
-                    columns.appendChild(card)
-                    card.appendChild(cardHeader)
-                    card.appendChild(cardContent)
-                    card.appendChild(score)
-                    counter++;
-                }
-                }
-            })
-        })
-    })
-
-}
-*/
