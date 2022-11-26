@@ -146,8 +146,33 @@ function createPagination() {
     })
 }
 
+/*makes the contianers viewport height 100 if not enough cards*/
+function getCards(){
+    let cards = document.querySelectorAll('.card')
+    let counter = 0;
+    cards.forEach(card=>{
+        if(card.classList.contains('hidden')){
+            counter++;
+        }
+    })
+    if(counter==0){
+        if(section.classList.contains('viewport-height')){
+            section.classList.remove('viewport-height')
+        }
+        return true;
+    }
+    if(counter<=4){
+        section.classList.add('viewport-height')
+    }else{
+        if(section.classList.contains('viewport-height')){
+            section.classList.remove('viewport-height')
+        }
+    }
+}
+
 /*sets the current page of the pagination to show all and the correct amount of games*/
 function setCurrentPage(pageNum) {
+    getCards();
     currentPage = pageNum;
     handleActivePageNumber();
     const prevRange = (pageNum - 1) * paginationLimit;
