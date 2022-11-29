@@ -152,7 +152,7 @@ li {
 }
 
 .container-button {
-    margin: 0 5%;
+    margin: 0 2%;
 }
 
 .button:hover {
@@ -170,13 +170,25 @@ li {
     justify-content: flex-end;
 }
 
-/*standings table*/
+::placeholder {
+    color: red;
+  }
 
+.button.is-link{
+    background-color: rgb(105, 149, 230);
+}
+
+.button.is-link:hover{
+    background-color: rgb(105, 149, 230);
+}
+
+/*standings table*/
 .container-table{
+    margin: 0 2%;
 }
 
 .name {
-    width: 45%;
+    width: 40%;
 }
 
 .rows {
@@ -254,7 +266,7 @@ li {
 }
 
 /*media queries*/
-@media(max-width: 1220px) {
+@media(max-width: 1312px){
     .table td.active {
         display: none;
     }
@@ -262,7 +274,9 @@ li {
     .table td.hidden {
         display: table-cell;
     }
+}
 
+@media(max-width: 1220px) {
     .is-one-quarter .card .hidden {
         display: block;
     }
@@ -362,15 +376,16 @@ li {
     .name {
         width: 15%;
     }
-
-    .pct {
-        display: none;
-    }
-
     .navbar a {
         font-size: 20px;
     }
+}
+
+@media(max-width: 575px){
     .streak{
+        display: none;
+    }
+    .pct {
         display: none;
     }
 }

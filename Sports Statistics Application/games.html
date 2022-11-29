@@ -31,6 +31,9 @@
   <nav class="pagination is-centered mt-5" role="navigation" aria-label="pagination">
     <ul class="pagination-list">
       <li>
+        <a onclick = "handleClick('<<')" id = "<<" class = "pagination-link big"><<</a>
+      </li>
+      <li>
         <a onclick="handleClick(1)" id="1" class="pagination-link is-current big" aria-label="Page 1"
           aria-current="page">1</a>
       </li>
@@ -54,6 +57,9 @@
       </li>
       <li>
         <a onclick="handleClick(8)" id="8" class="pagination-link big" aria-label="Goto page 3">8</a>
+      </li>
+      <li>
+        <a onclick = "handleClick('>>')" id = ">>" class = "pagination-link big">>></a>
       </li>
     </ul>
   </nav>

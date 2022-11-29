@@ -1,6 +1,7 @@
 const dataString = localStorage.getItem('teams');
 const teams = JSON.parse(dataString)
 let params = (new URL(document.location)).searchParams;
+let section = document.querySelector('.container-matches');
 const team = teams.filter(team => team.id == params.get('id'));
 let totalGames = [];
 const paginationNumbers = document.querySelector('.pagination-list')
@@ -24,8 +25,13 @@ function addToHero() {
 /*puts the score and teams on a card that's in columns*/
 /*puts columns in a big column, and creates a new big column every 4 columns*/
 function displayGames() {
-    let counter = 0;
     let section = document.querySelector('.container-matches');
+    let pageTitle = document.createElement('div')
+    pageTitle.textContent = team[0].name + "'s " + "Games";
+    pageTitle.classList.add('white')
+    pageTitle.classList.add('mb-3')
+    section.replaceChildren(pageTitle)
+    let counter = 0;
     let column;
     team[0].games.forEach((gameData) => {
         totalGames.push(gameData)
@@ -138,10 +144,21 @@ function createPagination() {
                 }
             })
         }
-        if (page) {
-            link.addEventListener("click", () => {
-                setCurrentPage(page)
-            })
+    })
+}
+
+/*sets the current page of the pagination to show all and the correct amount of games*/
+function setCurrentPage(pageNum) {
+    getCards();
+    currentPage = pageNum;
+    handleActivePageNumber();
+    const prevRange = (pageNum - 1) * paginationLimit;
+    const currRange = pageNum * paginationLimit;
+    let allGames = document.querySelectorAll('.card')
+    allGames.forEach((game, index) => {
+        game.classList.add('hidden')
+        if (index >= prevRange && index < currRange) {
+            game.classList.remove("hidden");
         }
     })
 }
@@ -170,27 +187,10 @@ function getCards(){
     }
 }
 
-/*sets the current page of the pagination to show all and the correct amount of games*/
-function setCurrentPage(pageNum) {
-    getCards();
-    currentPage = pageNum;
-    handleActivePageNumber();
-    const prevRange = (pageNum - 1) * paginationLimit;
-    const currRange = pageNum * paginationLimit;
-    let allGames = document.querySelectorAll('.card')
-    allGames.forEach((game, index) => {
-        game.classList.add('hidden')
-        if (index >= prevRange && index < currRange) {
-            game.classList.remove("hidden");
-        }
-    })
-}
-
 /*calls functions onload*/
 window.addEventListener('load', () => {
     addToHero();
     displayGames()
-    setCurrentPage(1)
     document.querySelectorAll('.small').forEach((link) => {
         let page = Number(link.textContent)
         if (page) {
