@@ -141,6 +141,9 @@ function displayGames(day) {
 /*this is pagination for games on certain days*/
 function createPagination() {
     const pageCount = Math.ceil(totalGames.length / paginationLimit)
+    if(pageCount<2){
+        return;
+    }
     let li = document.createElement('li')
     li.classList.add('small2')
     let a = document.createElement('a')
@@ -250,7 +253,6 @@ function getCards(){
 /*calls functions onload*/
 window.addEventListener('load', () => {
     createGames();
-    setCurrentPage(1)
     document.querySelectorAll('.small').forEach((link) => {
         let page = Number(link.textContent)
         if (page) {
@@ -272,4 +274,6 @@ const handleActivePageNumber = () => {
         }
     });
 };
+
+
 

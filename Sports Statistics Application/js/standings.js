@@ -16,16 +16,18 @@ button.addEventListener('click', () => {
     handleButtonClick();
 })
 
-/*creates a form and sets text properly on button click*/
+/*creates a form with 4 dropdowns on button click*/
+/*the 2 team dropdowns will not allow you to pick the same team*/
 function handleButtonClick() {
     let container = document.querySelector('.for-form')
     if (button.classList.contains('inactive')) {
         button.classList.remove('inactive')
         button.classList.add('active')
-        button.textContent = "Remove Game"
+        button.textContent = "Close Form"
         let form = document.createElement('div')
         form.classList.add('form')
         container.appendChild(form)
+
         let columns = document.createElement('div')
         columns.classList.add('columns')
         columns.classList.add('is-mobile')
@@ -38,20 +40,36 @@ function handleButtonClick() {
         fieldOne.classList.add('field')
         let labelOne = document.createElement('label')
         labelOne.classList.add('label')
+        labelOne.classList.add('left')
         labelOne.textContent = "Group";
         let controlOne = document.createElement('div')
         controlOne.classList.add('control')
-        let inputOne = document.createElement('input')
-        inputOne.classList.add('input')
-        inputOne.classList.add('group')
-        inputOne.type = "text"
-        inputOne.placeholder = "A, B, C, D"
+        let divOne = document.createElement('div')
+        divOne.classList.add('select')
+        divOne.setAttribute('onchange', 'handleSelectClick()')
+        let selectOne = document.createElement('select')
+        selectOne.classList.add('select-options')
+        selectOne.classList.add('group')
+        let optionOne = document.createElement('option')
+        optionOne.textContent = "Group A"
+        let optionTwo = document.createElement('option')
+        optionTwo.textContent = "Group B"
+        let optionThree = document.createElement('option')
+        optionThree.textContent = "Group C"
+        let optionFour = document.createElement('option')
+        optionFour.textContent = "Group D"
 
         columns.appendChild(columnOne)
         columnOne.appendChild(fieldOne)
         fieldOne.appendChild(labelOne)
         labelOne.appendChild(controlOne)
-        labelOne.appendChild(inputOne)
+        controlOne.appendChild(divOne)
+        divOne.appendChild(selectOne)
+        selectOne.appendChild(optionOne)
+        selectOne.appendChild(optionTwo)
+        selectOne.appendChild(optionThree)
+        selectOne.appendChild(optionFour)
+
 
         let columnTwo = document.createElement('div')
         columnTwo.classList.add('column')
@@ -60,20 +78,40 @@ function handleButtonClick() {
         fieldTwo.classList.add('field')
         let labelTwo = document.createElement('label')
         labelTwo.classList.add('label')
+        labelTwo.classList.add('left')
         labelTwo.textContent = "Team 1";
         let controlTwo = document.createElement('div')
         controlTwo.classList.add('control')
-        let inputTwo = document.createElement('input')
-        inputTwo.classList.add('input')
-        inputTwo.classList.add('team1')
-        inputTwo.type = "text"
-        inputTwo.placeholder = "Pick a team from chosen group"
+        let divTwo = document.createElement('div')
+        divTwo.classList.add('select')
+        divTwo.setAttribute('onchange', 'handleTeamSelectClick(2)')
+        let selectTwo = document.createElement('select')
+        selectTwo.classList.add('select-options')
+        selectTwo.classList.add('team1')
+        let team1 = document.createElement('option')
+        team1.classList.add('one')
+        team1.classList.add('first')
+        team1.textContent = "T1"
+        let team2 = document.createElement('option')
+        team2.classList.add('one')
+        team2.textContent = "Edward Gaming"
+        let team3 = document.createElement('option')
+        team3.classList.add('one')
+        team3.textContent = "Fnatic"
+        let team4 = document.createElement('option')
+        team4.classList.add('one')
+        team4.textContent = "Cloud 9"
 
         columns.appendChild(columnTwo)
         columnTwo.appendChild(fieldTwo)
         fieldTwo.appendChild(labelTwo)
         labelTwo.appendChild(controlTwo)
-        labelTwo.appendChild(inputTwo)
+        controlTwo.appendChild(divTwo)
+        divTwo.appendChild(selectTwo)
+        selectTwo.appendChild(team1)
+        selectTwo.appendChild(team2)
+        selectTwo.appendChild(team3)
+        selectTwo.appendChild(team4)
 
         let columns2 = document.createElement('div')
         columns2.classList.add('columns')
@@ -87,20 +125,35 @@ function handleButtonClick() {
         fieldThree.classList.add('field')
         let labelThree = document.createElement('label')
         labelThree.classList.add('label')
+        labelThree.classList.add('right')
         labelThree.textContent = "Team 2";
         let controlThree = document.createElement('div')
-        controlThree.classList.add('control')
-        let inputThree = document.createElement('input')
-        inputThree.classList.add('input')
-        inputThree.classList.add('team2')
-        inputThree.type = "text"
-        inputThree.placeholder = "Pick a team from chosen group"
+        controlTwo.classList.add('control')
+        let divThree = document.createElement('div')
+        divThree.classList.add('select')
+        divThree.setAttribute('onchange', 'handleTeamSelectClick(3)')
+        let selectThree = document.createElement('select')
+        selectThree.classList.add('select-options')
+        selectThree.classList.add('team2')
+        let teamTwo = document.createElement('option')
+        teamTwo.classList.add('two')
+        teamTwo.textContent = "Edward Gaming"
+        let teamThree = document.createElement('option')
+        teamThree.classList.add('two')
+        teamThree.textContent = "Fnatic"
+        let teamFour = document.createElement('option')
+        teamFour.classList.add('two')
+        teamFour.textContent = "Cloud 9"
 
         columns2.appendChild(columnThree)
         columnThree.appendChild(fieldThree)
         fieldThree.appendChild(labelThree)
         labelThree.appendChild(controlThree)
-        labelThree.appendChild(inputThree)
+        controlThree.appendChild(divThree)
+        divThree.appendChild(selectThree)
+        selectThree.appendChild(teamTwo)
+        selectThree.appendChild(teamThree)
+        selectThree.appendChild(teamFour)
 
         let columnFour = document.createElement('div')
         columnFour.classList.add('column')
@@ -109,20 +162,46 @@ function handleButtonClick() {
         fieldFour.classList.add('field')
         let labelFour = document.createElement('label')
         labelFour.classList.add('label')
+        labelFour.classList.add('right')
         labelFour.textContent = "Day";
         let controlFour = document.createElement('div')
         controlFour.classList.add('control')
-        let inputFour = document.createElement('input')
-        inputFour.classList.add('input')
-        inputFour.classList.add('day')
-        inputFour.type = "text"
-        inputFour.placeholder = "1 - 8"
+        let divFour = document.createElement('div')
+        divFour.classList.add('select')
+        let selectFour = document.createElement('select')
+        selectFour.classList.add('select-options')
+        selectFour.classList.add('day')
+        let day1 = document.createElement('option')
+        day1.textContent = "1"
+        let day2 = document.createElement('option')
+        day2.textContent = "2"
+        let day3 = document.createElement('option')
+        day3.textContent = "3"
+        let day4 = document.createElement('option')
+        day4.textContent = "4"
+        let day5 = document.createElement('option')
+        day5.textContent = "5"
+        let day6 = document.createElement('option')
+        day6.textContent = "6"
+        let day7 = document.createElement('option')
+        day7.textContent = "7"
+        let day8 = document.createElement('option')
+        day8.textContent = "8"
 
         columns2.appendChild(columnFour)
         columnFour.appendChild(fieldFour)
         fieldFour.appendChild(labelFour)
         labelFour.appendChild(controlFour)
-        labelFour.appendChild(inputFour)
+        controlFour.appendChild(divFour)
+        divFour.appendChild(selectFour)
+        selectFour.appendChild(day1)
+        selectFour.appendChild(day2)
+        selectFour.appendChild(day3)
+        selectFour.appendChild(day4)
+        selectFour.appendChild(day5)
+        selectFour.appendChild(day6)
+        selectFour.appendChild(day7)
+        selectFour.appendChild(day8)
 
         let columnFive = document.createElement('div')
         columnFive.classList.add('column')
@@ -137,6 +216,7 @@ function handleButtonClick() {
         divFive.classList.add('select')
         let select = document.createElement('select')
         select.classList.add('select-options')
+        select.classList.add('win')
         let option1 = document.createElement('option')
         option1.textContent = "Team 1"
         let option2 = document.createElement('option')
@@ -158,7 +238,7 @@ function handleButtonClick() {
         let buttonSix = document.createElement('button')
         buttonSix.classList.add('button')
         buttonSix.classList.add('is-link')
-        buttonSix.onclick = function () { handleFormClick() }
+        buttonSix.setAttribute('onclick', 'handleFormClick()')
         buttonSix.textContent = "Submit"
 
         form.appendChild(fieldSix)
@@ -166,6 +246,7 @@ function handleButtonClick() {
         controlSix.appendChild(buttonSix)
         button.classList.remove('inactive')
         button.classList.add('active')
+
     } else {
         container.replaceChildren();
         button.textContent = "Add Game"
@@ -174,62 +255,251 @@ function handleButtonClick() {
     }
 }
 
-/*adds a game to local storage and updates tables when submit is clicked on the form*/
-/*will check for validity*/
-function handleFormClick() {
-    let group = document.querySelector('.group').value.toUpperCase();
-    let team1 = document.querySelector('.team1').value.toUpperCase();
-    let team2 = document.querySelector('.team2').value.toUpperCase();
+/*changes the select when a team is picked so it won't appear on the other select*/
+function handleTeamSelectClick(value) {
+    let groupSelect = document.querySelector('.select-options')
+    let groupOption = groupSelect.options[groupSelect.selectedIndex]
+    let groupChosen = groupOption.value;
+    let counter = 0;
+    let otherCounter = 0;
+    let arrName = [];
+    let select;
+    if (value == 2) {
+        select = document.querySelector('.team1')
+    } else if (value == 3) {
+        select = document.querySelector('.team2')
+    }
+    let option = select.options[select.selectedIndex]
+    let chosen = option.value;
+    if (value == 2) {
+        if (groupChosen.indexOf('A') >= 0) {
+            groupA.forEach(team => {
+                if (team.name === chosen) {
+                } else {
+                    arrName.push(team.name)
+                }
+            })
+            document.querySelectorAll('.two').forEach(option => {
+                option.textContent = arrName[counter]
+                counter++;
+            })
+        } else if (groupChosen.indexOf('B') >= 0) {
+            groupB.forEach(team => {
+                if (team.name === chosen) {
+                } else {
+                    arrName.push(team.name)
+                }
+            })
+            document.querySelectorAll('.two').forEach(option => {
+                option.textContent = arrName[counter]
+                counter++;
+            })
+        } else if (groupChosen.indexOf('C') >= 0) {
+            groupC.forEach(team => {
+                if (team.name === chosen) {
+                } else {
+                    arrName.push(team.name)
+                }
+            })
+            document.querySelectorAll('.two').forEach(option => {
+                option.textContent = arrName[counter]
+                counter++;
+            })
+        } else if (groupChosen.indexOf('D') >= 0) {
+            groupD.forEach(team => {
+                if (team.name === chosen) {
+                } else {
+                    arrName.push(team.name)
+                }
+            })
+            document.querySelectorAll('.two').forEach(option => {
+                option.textContent = arrName[counter]
+                counter++;
+            })
+        }
+    } else if (value == 3) {
+        if (groupChosen.indexOf('A') >= 0) {
+            groupA.forEach(team => {
+                if (team.name === chosen) {
+                } else {
+                    arrName.push(team.name)
+                }
+            })
+            document.querySelectorAll('.one').forEach(option => {
+                otherCounter++;
+                if (otherCounter == 4) {
+                    option.classList.add('hidden')
+                }
+                option.textContent = arrName[counter]
+                counter++;
+            })
+        } else if (groupChosen.indexOf('B') >= 0) {
+            groupB.forEach(team => {
+                if (team.name === chosen) {
+                } else {
+                    arrName.push(team.name)
+                }
+            })
+            document.querySelectorAll('.one').forEach(option => {
+                otherCounter++;
+                if (otherCounter == 4) {
+                    option.classList.add('hidden')
+                }
+                option.textContent = arrName[counter]
+                counter++;
+            })
+        } else if (groupChosen.indexOf('C') >= 0) {
+            groupC.forEach(team => {
+                if (team.name === chosen) {
+                } else {
+                    arrName.push(team.name)
+                }
+            })
+            document.querySelectorAll('.one').forEach(option => {
+                otherCounter++;
+                if (otherCounter == 4) {
+                    option.classList.add('hidden')
+                }
+                option.textContent = arrName[counter]
+                counter++;
+            })
+        } else if (groupChosen.indexOf('D') >= 0) {
+            groupD.forEach(team => {
+                if (team.name === chosen) {
+                } else {
+                    arrName.push(team.name)
+                }
+            })
+            document.querySelectorAll('.one').forEach(option => {
+                option.textContent = arrName[counter]
+                counter++;
+            })
+        }
+    }
+}
+
+/*gets the value of the group that was selected*/
+function handleSelectClick() {
     let select = document.querySelector('.select-options')
     let option = select.options[select.selectedIndex]
-    let win = option.value;
-    let day = (+(document.querySelector('.day').value));
-    if (group.length == 0 || team1.length == 0 || team2.length == 0 || day < 1 || day > 8 || !(Number.isInteger(day))) {
-        alert("Please follow and fill all the fields")
-        deleteInputs();
-        return false
+    let chosen = option.value;
+    createSelect(chosen)
+}
+
+/*changes the select options when a different group is picked*/
+function createSelect(value) {
+    document.querySelector('.first').selected = true;
+    let counterTeam1 = 0;
+    let counterTeam2 = 0;
+    let counter = 0;
+    let otherCounter = 0;
+    let newArr = [];
+    if (value.indexOf('A') >= 0) {
+        groupA.forEach(team => {
+            if (counter >= 1) {
+                newArr.push(team)
+            }
+            counter++;
+        })
+        document.querySelectorAll('.one').forEach(option => {
+            option.textContent = groupA[counterTeam1].name
+            counterTeam1++;
+            otherCounter++;
+        })
+        document.querySelectorAll('.two').forEach(option => {
+            option.textContent = newArr[counterTeam2].name
+            counterTeam2++;
+        })
+    } else if (value.indexOf('B') >= 0) {
+        groupB.forEach(team => {
+            if (counter >= 1) {
+                newArr.push(team)
+            }
+            counter++;
+        })
+        document.querySelectorAll('.one').forEach(option => {
+            option.textContent = groupB[counterTeam1].name
+            counterTeam1++;
+            otherCounter++;
+        })
+        document.querySelectorAll('.two').forEach(option => {
+            option.textContent = newArr[counterTeam2].name
+            counterTeam2++;
+            otherCounter++;
+        })
+    } else if (value.indexOf('C') >= 0) {
+        groupC.forEach(team => {
+            if (counter >= 1) {
+                newArr.push(team)
+            }
+            counter++;
+        })
+        document.querySelectorAll('.one').forEach(option => {
+            option.textContent = groupC[counterTeam1].name
+            counterTeam1++;
+            otherCounter++;
+        })
+        document.querySelectorAll('.two').forEach(option => {
+            option.textContent = newArr[counterTeam2].name
+            counterTeam2++;
+        })
+    } else if (value.indexOf('D') >= 0) {
+        groupD.forEach(team => {
+            if (counter >= 1) {
+                newArr.push(team)
+            }
+            counter++;
+        })
+        document.querySelectorAll('.one').forEach(option => {
+            option.textContent = groupD[counterTeam1].name
+            counterTeam1++;
+            otherCounter++;
+        })
+        document.querySelectorAll('.two').forEach(option => {
+            option.textContent = newArr[counterTeam2].name
+            counterTeam2++;
+        })
     }
-    if (group.toUpperCase() === 'A') {
+}
+
+/*adds a game to local storage and updates tables when submit is clicked on the form*/
+function handleFormClick() {
+    let selectGroup = document.querySelector('.group')
+    let optionGroup = selectGroup.options[selectGroup.selectedIndex]
+    let group = optionGroup.value;
+    let selectT1 = document.querySelector('.team1')
+    let optionT1 = selectT1.options[selectT1.selectedIndex]
+    let team1 = optionT1.value.toUpperCase();
+    let selectT2 = document.querySelector('.team2')
+    let optionT2 = selectT2.options[selectT2.selectedIndex]
+    let team2 = optionT2.value.toUpperCase();
+    let selectWin = document.querySelector('.win')
+    let optionWin = selectWin.options[selectWin.selectedIndex]
+    let win = optionWin.value;
+    let selectDay = document.querySelector('.day')
+    let optionDay = selectDay.options[selectDay.selectedIndex]
+    let day = optionDay.value;
+    if (group.indexOf('A') >= 0) {
         if (checkGroupValidity(team1, team2, "A")) {
             let groupA = JSON.parse(localStorage.getItem('groupA'))
             determineGame(team1, team2, day, groupA, teamData, win, "A")
-        } else {
-            alert("Please Pick a team from Group A")
         }
-    } else if (group === 'B') {
+    } else if (group.indexOf('B') >= 0) {
         if (checkGroupValidity(team1, team2, "B")) {
             let groupB = JSON.parse(localStorage.getItem('groupB'))
             determineGame(team1, team2, day, groupB, teamData, win, "B")
-        } else {
-            alert("Please Pick a team from Group B")
         }
-    } else if (group === 'C') {
+    } else if (group.indexOf('C') >= 0) {
         if (checkGroupValidity(team1, team2, "C")) {
             let groupC = JSON.parse(localStorage.getItem('groupC'))
             determineGame(team1, team2, day, groupC, teamData, win, "C")
-        } else {
-            alert("Please Pick a team from Group C")
         }
-    } else if (group === "D") {
+    } else if (group.indexOf('D') >= 0) {
         if (checkGroupValidity(team1, team2, "D")) {
             let groupD = JSON.parse(localStorage.getItem('groupD'))
             determineGame(team1, team2, day, groupD, teamData, win, "D")
-        } else {
-            alert("Please Pick a team from Group D")
         }
-    } else {
-        alert("Please enter a valid group")
     }
-    deleteInputs();
-    return true;
-}
-
-/*deletes inputs in the form after accepted or rejected*/
-function deleteInputs() {
-    const inputs = document.querySelectorAll('.input')
-    inputs.forEach(input => {
-        input.value = '';
-    })
 }
 
 /*checks validity of the teams submitted*/
@@ -354,8 +624,8 @@ function determineGame(team1, team2, day, group, teams, win, groupLetter) {
     }
     let index = 0;
     let smallCounter = 0;
-    teams.forEach(team=>{
-        if(team.id.indexOf(groupLetter)>=0){
+    teams.forEach(team => {
+        if (team.id.indexOf(groupLetter) >= 0) {
             teams.splice(index, 1, group[smallCounter])
             smallCounter++;
         }
@@ -451,7 +721,7 @@ function createTable(group, groupNum) {
     if (groupNum == 'A') {
         tableBody = document.querySelector('#groupA tbody')
     } else if (groupNum == 'B') {
-        tableBody = document.querySelector('#groupB tbody') 
+        tableBody = document.querySelector('#groupB tbody')
     } else if (groupNum == 'C') {
         tableBody = document.querySelector('#groupC tbody')
     }

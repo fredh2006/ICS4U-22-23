@@ -33,6 +33,7 @@ function displayGames() {
     section.replaceChildren(pageTitle)
     let counter = 0;
     let column;
+    team[0].games = team[0].games.sort((gameA, gameB) => gameB.day- gameA.day)
     team[0].games.forEach((gameData) => {
         totalGames.push(gameData)
         if (counter % 4 == 0) {
@@ -92,6 +93,9 @@ function displayGames() {
 function createPagination() {
     paginationNumbers.classList.add('mt-5')
     const pageCount = Math.ceil(totalGames.length / paginationLimit)
+    if(pageCount<2){
+        return;
+    }
     let li = document.createElement('li')
     li.classList.add('small2')
     let a = document.createElement('a')
@@ -131,13 +135,11 @@ function createPagination() {
                 if (link.textContent === ">>") {
                     let page = currentPage + 1;
                     if (page > biggestPage[biggestPage.length - 1]) {
-                        setCurrentPage(currentPage)
                     } else {
                         setCurrentPage(currentPage + 1)
                     }
                 } else {
                     if (currentPage - 1 <= 0) {
-                        setCurrentPage(currentPage)
                     } else {
                         setCurrentPage(currentPage - 1)
                     }
@@ -194,7 +196,6 @@ window.addEventListener('load', () => {
     document.querySelectorAll('.small').forEach((link) => {
         let page = Number(link.textContent)
         if (page) {
-            console.log(page);
             link.addEventListener("click", () => {
                 setCurrentPage(page)
             })
