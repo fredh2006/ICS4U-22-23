@@ -4,6 +4,7 @@ let totalGames = [];
 let biggestPage = []
 const paginationNumbers = document.querySelector('.mini-pagination')
 const paginationLimit = 8;
+const columnLimit = 2;
 let currentPage = 1;
 const dataString = localStorage.getItem('teams');
 const teams = JSON.parse(dataString)
@@ -142,6 +143,7 @@ function displayGames(day) {
 function createPagination() {
     const pageCount = Math.ceil(totalGames.length / paginationLimit)
     if(pageCount<2){
+        section.classList.remove('viewport-height')
         return;
     }
     let li = document.createElement('li')
@@ -224,12 +226,22 @@ function setCurrentPage(pageNum) {
             game.classList.remove("hidden");
         }
     })
+    const prevRangeCol = (pageNum - 1) * columnLimit;
+    const currRangeCol = pageNum * columnLimit
+    document.querySelectorAll('.columns').forEach((col, index)=>{
+        col.classList.add('hidden')
+        if (index >= prevRangeCol && index < currRangeCol) {
+            col.classList.remove("hidden");
+        }
+    })
 }
 
 /*makes the contianers viewport height 100 if not enough cards*/
 function getCards(){
     let cards = document.querySelectorAll('.card')
     let counter = 0;
+    let columns = document.querySelectorAll('.columns')
+
     cards.forEach(card=>{
         if(card.classList.contains('hidden')){
             counter++;
@@ -241,7 +253,7 @@ function getCards(){
         }
         return true;
     }
-    if(counter<=4){
+    if(counter>=4){
         section.classList.add('viewport-height')
     }else{
         if(section.classList.contains('viewport-height')){
@@ -253,14 +265,6 @@ function getCards(){
 /*calls functions onload*/
 window.addEventListener('load', () => {
     createGames();
-    document.querySelectorAll('.small').forEach((link) => {
-        let page = Number(link.textContent)
-        if (page) {
-            link.addEventListener("click", () => {
-                setCurrentPage(page)
-            })
-        }
-    })
 })
 
 /*identifies the active page in pagination*/
