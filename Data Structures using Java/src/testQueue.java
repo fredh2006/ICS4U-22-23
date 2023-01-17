@@ -17,10 +17,10 @@ public class testQueue {
         }
 
         System.out.println("Test Passed: " + testPassed);
-        System.out.println("Test Failed: " + testFailed); 
+        System.out.println("Test Failed: " + testFailed);
     }
 
-    private static arrayQueue prepareArrayQueue(){
+    private static arrayQueue prepareArrayQueue() {
         arrayQueue queue = new arrayQueue();
         queue.enqueue(1);
         queue.enqueue(2);
@@ -34,31 +34,33 @@ public class testQueue {
 
     private static boolean testArrayQueue() {
         arrayQueue queue = prepareArrayQueue();
-        if(queue.get(0)!=1)
+        if (queue.get(0) != 1)
             return false;
-        if(queue.get(4)!=5)
+        if (queue.get(4) != 5)
             return false;
-        if(queue.get(2)!=3)
-            return false;
-        
-        queue.dequeue();
-        if(queue.get(0)!=2)
+        if (queue.get(2) != 3)
             return false;
         queue.dequeue();
-        if(queue.get(0)!=3)
+        if (queue.get(0) != 2)
             return false;
-        
-        if(queue.peak()!=3)
+        queue.dequeue();
+        if (queue.get(0) != 3)
             return false;
-        
+
+        if (queue.peak() != 3)
+            return false;
+
         queue.clear();
-        if(!queue.isEmpty())
+        if (!queue.isEmpty())
+            return false;
+        queue.enqueue(1);
+        if(queue.isEmpty())
             return false;
 
         return true;
     }
 
-    private static linkedListQueue prepareLLQueue(){
+    private static linkedListQueue prepareLLQueue() {
         linkedListQueue queue = new linkedListQueue();
         queue.enqueue(1);
         queue.enqueue(2);
@@ -71,26 +73,29 @@ public class testQueue {
 
     private static boolean testLLQueue() {
         linkedListQueue queue = prepareLLQueue();
-        if(queue.get(0)!=1)
+        if (queue.get(0) != 1)
             return false;
-        if(queue.get(4)!=5)
+        if (queue.get(4) != 5)
             return false;
-        if(queue.get(2)!=3)
+        if (queue.get(2) != 3)
             return false;
-        
+
         queue.dequeue();
-        if(queue.get(0)!=2)
+        if (queue.get(0) != 2)
             return false;
         queue.dequeue();
-        if(queue.get(0)!=3)
+        if (queue.get(0) != 3)
             return false;
-        
-        if(queue.peak()!=3)
+
+        if (queue.peak() != 3)
             return false;
-        
+
         queue.clear();
-        if(!queue.isEmpty())
+        if (!queue.isEmpty())
             return false;
+        queue.enqueue(1);
+            if(queue.isEmpty())
+                return false;
 
         return true;
     }
