@@ -31,31 +31,41 @@ public class testBST {
 
     public static boolean testBinarySearchTree() {
         intBST bst = prepareBST();
-        if(!(bst.find(1).getValue()==1))
+        if (!(bst.find(1).getValue() == 1))
             return false;
-        if(!(bst.find(11).getValue()==11))
+        if (!(bst.find(11).getValue() == 11))
             return false;
-        if(!(bst.find(15)==null))
+        if (!(bst.find(15) == null))
             return false;
-        
-        if(!(bst.find(6).getLeftChild().getValue()==3))
+
+        if (!(bst.find(6).getLeftChild().getValue() == 3))
             return false;
-        if(!(bst.find(6).getRightChild().getValue()==8))
+        if (!(bst.find(6).getRightChild().getValue() == 8))
             return false;
-        if(!(bst.find(3).getLeftChild().getValue()==1))
+        if (!(bst.find(3).getLeftChild().getValue() == 1))
             return false;
-        if(!(bst.find(8).getRightChild().getValue()==13))
+        if (!(bst.find(8).getRightChild().getValue() == 13))
             return false;
 
         String inOrder = "1367891113";
-        if(!(bst.inOrderPrintTraversal().equals(inOrder)))
+        if (!(bst.inOrderPrintTraversal().equals(inOrder)))
             return false;
         String preOrder = "6318713911";
-        if(!(bst.preOrderPrintTraversal().equals(preOrder)))
+        if (!(bst.preOrderPrintTraversal().equals(preOrder)))
             return false;
         String postOrder = "1371191386";
-        if(!(bst.postOrderPrintTraversal().equals(postOrder)))
-            return false;   
+        if (!(bst.postOrderPrintTraversal().equals(postOrder)))
+            return false;
+        
+        bst.remove(11);
+        if (bst.find(9).getRightChild() != null)
+            return false;
+        bst.remove(3);
+        if (bst.find(6).getLeftChild().getValue() != 1)
+            return false;
+        bst.remove(6);
+        if (bst.find(7).getRightChild().getValue() != 8)
+            return false; 
 
         return true;
     }
