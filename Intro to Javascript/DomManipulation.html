@@ -40,18 +40,28 @@
         const para = document.createElement('p');
         para.textContent = 'Fred is the best';
 
+        const pa = document.querySelector('p');
+
         sect.appendChild(para);
+
 
         const text = document.createTextNode(' -- no one is better than Fred');
 
+        pa.appendChild(text)
+
         //iterarte thorugh all paragraphs and add text to it
         const textAll = document.querySelectorAll('p');
+
+
+/*
         textAll.forEach(
             val => {
                 //const text = document.createTextNode(' -- no one is better than Fred');
                 val.appendChild(text);
             }
         )
+        /*
+
 
         document.querySelector('p:last-of-type').remove();
 
@@ -84,7 +94,7 @@
             sect.appendChild(para);
 
         };
-
+*/
     </script>
 </body>
 

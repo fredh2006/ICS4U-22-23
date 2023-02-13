@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messaging</title>
+</head>
+
+<body>
+    <div id="sendMsg">
+        <div>
+            <input type="text" id="phone" placeholder="Phone Number">
+        </div>
+        <div>
+            <textarea id="message" placeholder="Send a message"></textarea>
+        </div>
+        <input id = "submit" onclick="sendMessage()" type="submit" value="Submit">
+    </div>
+    <div id = "error"></div>
+</body>
+<script src = "twilio.js">
+
+</script>
+
+</html>

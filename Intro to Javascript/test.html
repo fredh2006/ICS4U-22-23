@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+  <title>Document</title>
+</head>
+
+<body onload = "createSchedule()">
+  <div class = "container mt-5">
+  <nav class="pagination" role="navigation" aria-label="pagination">
+    <ul class="pagination-list">
+      <li>
+        <a onclick = "handleClick(1)" id = "1" class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+      </li>
+      <li>
+        <a onclick = "handleClick(2)" id = "2"class="pagination-link"  aria-label="Goto page 2">2</a>
+      </li>
+      <li>
+        <a onclick = "handleClick(3)" id = "3" class="pagination-link" aria-label="Goto page 3">3</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<section class="section" id = "section">
+</section>
+</body>
+<script>
+
+console.log(!(Number.isInteger(1)));
+
+
+let buttons = document.querySelectorAll('a')
+console.log(buttons);
+let section = document.getElementById("section")
+
+
+function handleClick(num){
+  console.log("hello");
+  buttons.forEach(button=>{
+    if(button.classList.contains("is-current")){
+      button.classList.remove("is-current")
+    }
+  })
+  let clickedButton = document.getElementById(num)
+  console.log(clickedButton);
+  clickedButton.classList.add("is-current")
+  createSchedule();
+}
+
+function createSchedule(){
+    let currentPage;
+    buttons.forEach(button=>{
+      if(button.classList.contains("is-current")){
+        currentPage = button.id;
+      }
+    })
+    let pageTitle = document.createElement('div')
+    pageTitle.textContent = currentPage;
+    section.replaceChildren(pageTitle)
+  }
+
+</script>
+
+</html>

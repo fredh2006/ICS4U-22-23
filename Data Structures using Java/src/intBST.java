@@ -44,9 +44,9 @@ public class intBST {
       } else if (val > root.getValue()) {
          root.setRightChild(removeRecursive(root.getRightChild(), val));
       } else {
-         if (root.getLeftChild() == null) {
+         if (!(root.hasLeftChild())) {
             return root.getRightChild();
-         } else if (root.getRightChild() == null) {
+         } else if (!(root.hasRightChild())) {
             return root.getLeftChild();
          } else {
             Integer biggest = findSmallest(root.getRightChild());

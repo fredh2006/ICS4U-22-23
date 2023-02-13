@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-plugin-vue": "^9.8.0"
+  },
+  "dependencies": {
+    "json-server": "^0.17.1",
+    "vue-router": "^4.0.13"
+  }
+}

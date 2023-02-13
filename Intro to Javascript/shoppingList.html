@@ -18,11 +18,11 @@
 </body>
 
 <script>
-    const input = document.querySelector('#item');
-    const btn = document.querySelector('#addItem');
-    const itemList = document.querySelector('ul');
+    const input = document.querySelector('input');
+    const btn = document.querySelector('button');
+    const itemList = document.querySelector('ul'); 
 
-    const addItem = function addItem() {
+    const addItem = () => {
        const itemText = input.value;
        if (itemText !== undefined && itemText !== '') {
           const li = document.createElement('li');
@@ -56,12 +56,12 @@
 
 
     // passing in a callback to the forEach function 
-    const arr = [1, 2, 3, , , , 6];
-    arr.forEach((a, b, c) => {
-       console.log('Element: ' + a);
-       console.log('Index: ' + b);
-       console.log('Whole Array: ' + c);
-    });
+      const arr = [1, 2, 3, , , , 6];
+      arr.forEach((a, b, c) => {
+         console.log('Element: ' + a);
+         console.log('Index: ' + b);
+         console.log('Whole Array: ' + c);
+      });
  </script>
 
 </html>
