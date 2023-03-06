@@ -23,6 +23,16 @@ app.get('/api/students/:id', (req, res)=>{
     res.send(student)
 })
 
+app.get('/app/courses', (req, res)=>{
+    res.send(courses)
+})
+
+let courses =[
+    {id: 1, name: 'Introduction to Computer Science', instructor: 'Fred He'},
+    {id: 2, name: 'Web Development Fundamentals', instructor: 'Kyle Jackson'},
+    {id: 3, name: 'Databse Systems', instructor: 'Teddy Porfiris'}
+]
+
 app.post('/api/students', (req, res)=>{
     const student = {
         id: students.length+1,
