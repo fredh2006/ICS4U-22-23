@@ -23,7 +23,7 @@ app.get('/api/students/:id', (req, res)=>{
     res.send(student)
 })
 
-app.get('/app/courses', (req, res)=>{
+app.get('/api/courses', (req, res)=>{
     res.send(courses)
 })
 
